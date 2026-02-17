@@ -8,7 +8,7 @@ const hostname = 'localhost';
 const server = http.createServer((req, res) => {
   let filePath = '.' + req.url;
   if (filePath === './') {
-    filePath = './cultural-event.html';
+    filePath = './ecstasy2026.html';
   }
 
   const extname = String(path.extname(filePath)).toLowerCase();
