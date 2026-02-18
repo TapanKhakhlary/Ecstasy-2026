@@ -1305,7 +1305,7 @@
             }
 
             .floating-nav {
-                top: 15px;
+                top: 60px;
                 right: 15px;
                 padding: 6px;
             }
@@ -1551,10 +1551,71 @@
             cursor: not-allowed;
         }
         
+        /* Top Logo Header */
+        .logo-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            z-index: 1001;
+            border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+        }
+
+        .logo-left,
+        .logo-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-left img {
+            height: 60px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-right img {
+            height: 60px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-left img:hover,
+        .logo-right img:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .logo-header {
+                padding: 10px 15px;
+            }
+
+            .logo-left img,
+            .logo-right img {
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-header {
+                padding: 8px 10px;
+            }
+
+            .logo-left img,
+            .logo-right img {
+                height: 35px;
+            }
+        }
+        
         /* Floating Navigation */
         .floating-nav {
             position: fixed;
-            top: 20px;
+            top: 100px;
             left: 50%;
             transform: translateX(-50%);
             background: rgba(26, 26, 26, 0.95);
@@ -1570,7 +1631,7 @@
 
         @media (max-width: 768px) {
             .floating-nav {
-                top: 20px;
+                top: 70px;
                 right: 20px;
                 left: auto;
                 transform: none;
@@ -1825,6 +1886,16 @@
     </style>
 </head>
 <body>
+    <!-- Top Logo Header -->
+    <div class="logo-header">
+        <div class="logo-left">
+            <img src="media/cit-logo.png" alt="CIT Logo">
+        </div>
+        <div class="logo-right">
+            <img src="ecstasy-logo.png" alt="Ecstasy Logo">
+        </div>
+    </div>
+
     <!-- Full Page 3D Background Video -->
     <div class="background-video-container">
         <video class="background-video" autoplay muted loop playsinline>
@@ -2257,7 +2328,7 @@
                 <div class="schedule-item break">
                     <div class="schedule-time">12:30 PM - 1:30 PM</div>
                     <div class="schedule-details">
-                        <h4>Lunch</h4>
+                        <h4>Short Break</h4>
                     </div>
                 </div>
 
@@ -2347,7 +2418,7 @@
                 <div class="schedule-item break">
                     <div class="schedule-time">12:30 PM - 1:30 PM</div>
                     <div class="schedule-details">
-                        <h4>Lunch</h4>
+                        <h4>Short Break</h4>
                     </div>
                 </div>
 
@@ -2474,7 +2545,7 @@
                 <div class="schedule-item break">
                     <div class="schedule-time">12:30 PM - 1:30 PM</div>
                     <div class="schedule-details">
-                        <h4>Lunch</h4>
+                        <h4>Short Break</h4>
                     </div>
                 </div>
 
@@ -2516,14 +2587,14 @@
                 <div class="schedule-item">
                     <div class="schedule-time">5:40 PM - 6:00 PM</div>
                     <div class="schedule-details">
-                        <h4>Begumchha-Dance by Students</h4>
+                        <h4>Bagurumba-Dance by Students</h4>
                     </div>
                 </div>
 
                 <div class="schedule-item">
                     <div class="schedule-time">6:10 PM - 6:30 PM</div>
                     <div class="schedule-details">
-                        <h4>Ramdheinu Bihu Dol</h4>
+                        <h4>Ramdhenu Bihu Dol</h4>
                     </div>
                 </div>
 
