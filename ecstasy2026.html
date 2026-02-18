@@ -1205,12 +1205,12 @@
             .hero-video-container {
                 position: absolute;
                 width: 100%;
-                height: 100%;
+                height: 56.25vw;
                 overflow: hidden;
-                top: 0;
+                top: 50%;
                 left: 0;
-                right: 0;
-                bottom: 0;
+                transform: translateY(-50%);
+                max-height: 100vh;
             }
 
             .hero-video {
@@ -1309,13 +1309,12 @@
 
             .hero-video-container {
                 width: 100%;
-                height: 100%;
+                height: 56.25vw;
                 left: 0;
-                right: 0;
-                top: 0;
-                bottom: 0;
-                transform: none;
+                top: 50%;
+                transform: translateY(-50%);
                 position: absolute;
+                max-height: 100vh;
             }
             
             .hero-video {
