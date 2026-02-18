@@ -112,7 +112,7 @@
         .hero-video {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             object-position: center;
         }
 
@@ -1191,10 +1191,10 @@
             /* Mobile Video Styles */
             .hero {
                 min-height: 100vh;
-                height: 100vh;
-                padding: 0;
-                width: 100vw;
-                overflow: hidden;
+                height: auto;
+                padding: 100px 20px;
+                width: 100%;
+                overflow: visible;
                 position: relative;
                 display: flex;
                 align-items: center;
@@ -1202,9 +1202,9 @@
             }
 
             .hero-video-container {
-                width: 100vw;
-                height: 100vh;
-                overflow: hidden;
+                width: 100%;
+                height: 100%;
+                overflow: visible;
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -1215,7 +1215,7 @@
             .hero-video {
                 width: 100%;
                 height: 100%;
-                object-fit: cover;
+                object-fit: contain;
                 object-position: center center;
                 position: absolute;
                 top: 0;
@@ -1288,10 +1288,11 @@
             }
 
             .hero {
-                height: 100vh;
+                height: auto;
                 min-height: 100vh;
-                width: 100vw;
-                overflow: hidden;
+                width: 100%;
+                overflow: visible;
+                padding: 80px 15px;
             }
 
             .hero-video-container {
@@ -1303,6 +1304,7 @@
                 bottom: 0;
                 transform: none;
                 position: absolute;
+                overflow: visible;
             }
             
             .video-controls {
