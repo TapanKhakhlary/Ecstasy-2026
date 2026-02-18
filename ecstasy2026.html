@@ -1622,9 +1622,10 @@
             padding: 10px 20px;
             box-shadow: 0 10px 40px rgba(255, 107, 53, 0.2);
             z-index: 1000;
-            opacity: 1;
+            opacity: 0;
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             border: 1px solid rgba(255, 107, 53, 0.3);
+            pointer-events: none;
         }
 
         @media (max-width: 768px) {
@@ -1636,20 +1637,23 @@
                 background: rgba(26, 26, 26, 0.7);
                 padding: 8px;
                 border-radius: 12px;
-                opacity: 1 !important;
+                opacity: 0;
                 z-index: 1000;
                 position: fixed;
+                pointer-events: none;
             }
             
             .floating-nav.visible {
                 opacity: 1 !important;
                 transform: none !important;
+                pointer-events: auto !important;
             }
         }
         
         .floating-nav.visible {
             opacity: 1;
             transform: translateX(-50%) translateY(0);
+            pointer-events: auto;
         }
         
         .floating-nav.hidden {
@@ -2789,14 +2793,15 @@
         // Floating Navigation Show/Hide
         let lastScrollTop = 0;
         const floatingNav = document.getElementById('floatingNav');
+        const heroHeight = window.innerHeight * 0.8; // Show after 80% of viewport height
 
         window.addEventListener('scroll', () => {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             
-            if (scrollTop > 100) {
+            if (scrollTop > heroHeight) {
                 floatingNav.classList.add('visible');
                 
-                if (scrollTop > lastScrollTop && scrollTop > 300) {
+                if (scrollTop > lastScrollTop && scrollTop > heroHeight + 200) {
                     floatingNav.classList.add('hidden');
                 } else {
                     floatingNav.classList.remove('hidden');
