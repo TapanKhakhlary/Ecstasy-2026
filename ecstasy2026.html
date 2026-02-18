@@ -149,41 +149,6 @@
             z-index: 2;
         }
 
-        .video-controls {
-            position: absolute;
-            bottom: 30px;
-            right: 30px;
-            display: flex;
-            gap: 15px;
-            z-index: 4;
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
-        }
-
-        .video-controls:hover {
-            opacity: 1;
-        }
-
-        .video-toggle,
-        .video-mute {
-            background: rgba(255, 255, 255, 0.2);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50px;
-            padding: 12px 16px;
-            color: white;
-            cursor: pointer;
-            font-size: 16px;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        .video-toggle:hover,
-        .video-mute:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-        }
-
         .hero-content {
             position: relative;
             z-index: 3;
@@ -2025,18 +1990,6 @@
             
             <!-- Video Overlay -->
             <div class="video-overlay"></div>
-            
-            <!-- Video Controls -->
-            <div class="video-controls">
-                <button class="video-toggle" id="videoToggle" title="Play/Pause">
-                    <span class="play-icon">▶️</span>
-                    <span class="pause-icon" style="display: none;">⏸️</span>
-                </button>
-                <button class="video-mute" id="videoMute" title="Mute/Unmute">
-                    <span class="mute-icon">🔊</span>
-                    <span class="unmute-icon" style="display: none;">🔇</span>
-                </button>
-            </div>
         </div>
         
         <div class="hero-content">
@@ -2949,78 +2902,6 @@
         });
 
         console.log('🎉 Ecstasy 2026 - Interactive features loaded!');
-
-        // Video Controls
-        const heroVideo = document.querySelector('.hero-video');
-        const videoToggle = document.getElementById('videoToggle');
-        const videoMute = document.getElementById('videoMute');
-
-        if (heroVideo && videoToggle) {
-            // Play/Pause functionality
-            videoToggle.addEventListener('click', () => {
-                const playIcon = videoToggle.querySelector('.play-icon');
-                const pauseIcon = videoToggle.querySelector('.pause-icon');
-                
-                if (heroVideo.paused) {
-                    heroVideo.play();
-                    playIcon.style.display = 'none';
-                    pauseIcon.style.display = 'inline';
-                } else {
-                    heroVideo.pause();
-                    playIcon.style.display = 'inline';
-                    pauseIcon.style.display = 'none';
-                }
-            });
-
-            // Mute/Unmute functionality
-            videoMute.addEventListener('click', () => {
-                const muteIcon = videoMute.querySelector('.mute-icon');
-                const unmuteIcon = videoMute.querySelector('.unmute-icon');
-                
-                if (heroVideo.muted) {
-                    heroVideo.muted = false;
-                    muteIcon.style.display = 'inline';
-                    unmuteIcon.style.display = 'none';
-                } else {
-                    heroVideo.muted = true;
-                    muteIcon.style.display = 'none';
-                    unmuteIcon.style.display = 'inline';
-                }
-            });
-
-            // Update play/pause icon when video plays/pauses naturally
-            heroVideo.addEventListener('play', () => {
-                videoToggle.querySelector('.play-icon').style.display = 'none';
-                videoToggle.querySelector('.pause-icon').style.display = 'inline';
-            });
-
-            heroVideo.addEventListener('pause', () => {
-                videoToggle.querySelector('.play-icon').style.display = 'inline';
-                videoToggle.querySelector('.pause-icon').style.display = 'none';
-            });
-
-            // Auto-hide controls on mobile
-            if (window.innerWidth <= 768) {
-                const videoControls = document.querySelector('.video-controls');
-                let hideTimeout;
-                
-                const showControls = () => {
-                    videoControls.style.opacity = '1';
-                    clearTimeout(hideTimeout);
-                    hideTimeout = setTimeout(() => {
-                        videoControls.style.opacity = '0.3';
-                    }, 3000);
-                };
-
-                videoControls.addEventListener('click', showControls);
-                heroVideo.addEventListener('click', showControls);
-                
-                // Initially show controls briefly
-                showControls();
-            }
-
-            console.log('🎬 Video controls initialized!');
-        }
     </script>
 </body>
 </html>
