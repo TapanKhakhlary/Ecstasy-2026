@@ -1099,8 +1099,6 @@
 
             .about {
                 padding-top: 0;
-                position: relative;
-                z-index: 10;
             }
 
             /* Schedule Tabs Mobile */
@@ -1198,18 +1196,10 @@
 
             /* Mobile Video Styles */
             .hero {
-                min-height: 100vh;
-                height: 100vh;
-                padding: 60px 20px;
-                width: 100%;
-                max-width: 100%;
-                overflow: hidden;
                 position: relative;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin: 0;
-                margin-bottom: -100px;
+                width: 100%;
+                height: 100vh;
+                overflow: hidden;
             }
 
             .hero-video-container {
@@ -1224,15 +1214,12 @@
             }
 
             .hero-video {
-                width: 100%;
-                height: 100%;
-                object-fit: contain;
-                object-position: center center;
                 position: absolute;
                 top: 0;
                 left: 0;
-                right: 0;
-                bottom: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
             }
 
             .video-controls {
@@ -1257,15 +1244,13 @@
 
             .hero-content {
                 position: relative;
-                padding: 20px;
-                z-index: 5;
-                width: 100%;
-                max-width: 100%;
-                box-sizing: border-box;
+                z-index: 2;
+                color: white;
+                height: 100%;
                 display: flex;
-                flex-direction: column;
-                align-items: center;
                 justify-content: center;
+                align-items: center;
+                text-align: center;
             }
 
             /* Fix text sections on mobile */
@@ -1299,14 +1284,10 @@
             }
 
             .hero {
-                height: 100vh;
-                min-height: 100vh;
+                position: relative;
                 width: 100%;
-                max-width: 100%;
+                height: 100vh;
                 overflow: hidden;
-                padding: 40px 15px;
-                margin: 0;
-                margin-bottom: -80px;
             }
 
             .hero-video-container {
@@ -1351,15 +1332,23 @@
             }
 
             .hero-video {
-                width: 100%;
-                height: 100%;
-                object-fit: contain;
-                display: block;
                 position: absolute;
                 top: 0;
                 left: 0;
-                right: 0;
-                bottom: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .hero-content {
+                position: relative;
+                z-index: 2;
+                color: white;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
             }
 
             /* Schedule Tabs Extra Small */
@@ -2199,7 +2188,7 @@
             <p style="text-align: center; color: #888888; margin-bottom: 40px;">Meet the amazing people making this event possible</p>
             <div class="members-grid">
                 <div class="member-card">
-                    <div class="member-photo">👤</div>
+                    <div class="member-photo">?</div>
                     <div class="member-info">
                         <h3>Member Name</h3>
                         <p class="position">Position/Role</p>
@@ -2208,7 +2197,7 @@
                 </div>
 
                 <div class="member-card">
-                    <div class="member-photo">👤</div>
+                    <div class="member-photo">?</div>
                     <div class="member-info">
                         <h3>Member Name</h3>
                         <p class="position">Position/Role</p>
@@ -2217,7 +2206,7 @@
                 </div>
 
                 <div class="member-card">
-                    <div class="member-photo">👤</div>
+                    <div class="member-photo">?</div>
                     <div class="member-info">
                         <h3>Member Name</h3>
                         <p class="position">Position/Role</p>
@@ -2226,7 +2215,7 @@
                 </div>
 
                 <div class="member-card">
-                    <div class="member-photo">👤</div>
+                    <div class="member-photo">?</div>
                     <div class="member-info">
                         <h3>Member Name</h3>
                         <p class="position">Position/Role</p>
@@ -2235,7 +2224,7 @@
                 </div>
 
                 <div class="member-card">
-                    <div class="member-photo">👤</div>
+                    <div class="member-photo">?</div>
                     <div class="member-info">
                         <h3>Member Name</h3>
                         <p class="position">Position/Role</p>
@@ -2244,7 +2233,7 @@
                 </div>
 
                 <div class="member-card">
-                    <div class="member-photo">👤</div>
+                    <div class="member-photo">?</div>
                     <div class="member-info">
                         <h3>Member Name</h3>
                         <p class="position">Position/Role</p>
