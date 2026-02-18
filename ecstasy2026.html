@@ -1222,6 +1222,20 @@
                 object-fit: cover;
             }
 
+            .hero-content {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 2;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 20px;
+            }
+
             .video-controls {
                 position: fixed;
                 bottom: 80px;
@@ -1243,14 +1257,17 @@
             }
 
             .hero-content {
-                position: relative;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
                 z-index: 2;
-                color: white;
-                height: 100%;
                 display: flex;
+                flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                text-align: center;
+                padding: 20px;
             }
 
             /* Fix text sections on mobile */
@@ -1301,6 +1318,29 @@
                 position: absolute;
             }
             
+            .hero-video {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .hero-content {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 2;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 15px;
+            }
+
             .video-controls {
                 bottom: 100px;
                 right: 15px;
@@ -1329,26 +1369,6 @@
 
             .hero .tagline {
                 font-size: 0.9rem;
-            }
-
-            .hero-video {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-
-            .hero-content {
-                position: relative;
-                z-index: 2;
-                color: white;
-                height: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                text-align: center;
             }
 
             /* Schedule Tabs Extra Small */
