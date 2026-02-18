@@ -1191,10 +1191,14 @@
             /* Mobile Video Styles */
             .hero {
                 min-height: 100vh;
+                height: 100vh;
                 padding: 0;
                 width: 100vw;
                 overflow: hidden;
                 position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
 
             .hero-video-container {
@@ -1204,16 +1208,20 @@
                 position: absolute;
                 top: 0;
                 left: 0;
+                right: 0;
+                bottom: 0;
             }
 
             .hero-video {
-                width: 100vw;
-                height: 100vh;
+                width: 100%;
+                height: 100%;
                 object-fit: cover;
                 object-position: center center;
                 position: absolute;
                 top: 0;
                 left: 0;
+                right: 0;
+                bottom: 0;
             }
 
             .video-controls {
@@ -1241,7 +1249,12 @@
                 padding: 20px;
                 z-index: 5;
                 width: 100%;
+                max-width: 100vw;
                 box-sizing: border-box;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
             }
 
             /* Fix text sections on mobile */
@@ -1274,11 +1287,22 @@
                 opacity: 0.5;
             }
 
-            .hero-video-container {
-                width: 100vw;
+            .hero {
                 height: 100vh;
+                min-height: 100vh;
+                width: 100vw;
+                overflow: hidden;
+            }
+
+            .hero-video-container {
+                width: 100%;
+                height: 100%;
                 left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
                 transform: none;
+                position: absolute;
             }
             
             .video-controls {
