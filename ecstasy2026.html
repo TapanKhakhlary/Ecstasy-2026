@@ -1706,10 +1706,6 @@
 
             .logo-left {
                 position: fixed;
-                bottom: 15px;
-                left: 50%;
-                transform: translateX(-50%);
-                top: auto;
                 top: 70px;
                 left: 15px;
                 transition: all 0.3s ease;
@@ -1734,7 +1730,11 @@
             /* When scrolled to about section */
             .logo-header.scrolled .logo-left {
                 top: 8px;
-                left: 10px
+                left: 10px;
+            }
+
+            .logo-header.scrolled .logo-right {
+                top: 8px;
                 left: auto;
                 right: 10px;
                 transform: none;
