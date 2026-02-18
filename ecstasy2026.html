@@ -1654,8 +1654,46 @@
                 padding: 10px 15px;
             }
 
-            .logo-left img,
+            .logo-left {
+                position: fixed;
+                bottom: 20px;
+                left: 15px;
+                top: auto;
+                transition: all 0.3s ease;
+            }
+
+            .logo-right {
+                position: fixed;
+                top: 15px;
+                right: 15px;
+                transition: all 0.3s ease;
+            }
+
+            .logo-left img {
+                height: 55px;
+            }
+
             .logo-right img {
+                height: 70px;
+            }
+
+            /* When scrolled to about section */
+            .logo-header.scrolled .logo-left {
+                top: 10px;
+                bottom: auto;
+                left: 15px;
+            }
+
+            .logo-header.scrolled .logo-right {
+                top: 10px;
+                right: 15px;
+            }
+
+            .logo-header.scrolled .logo-left img {
+                height: 55px;
+            }
+
+            .logo-header.scrolled .logo-right img {
                 height: 55px;
             }
         }
@@ -1665,8 +1703,46 @@
                 padding: 8px 10px;
             }
 
-            .logo-left img,
+            .logo-left {
+                position: fixed;
+                bottom: 15px;
+                left: 10px;
+                top: auto;
+                transition: all 0.3s ease;
+            }
+
+            .logo-right {
+                position: fixed;
+                top: 10px;
+                right: 10px;
+                transition: all 0.3s ease;
+            }
+
+            .logo-left img {
+                height: 45px;
+            }
+
             .logo-right img {
+                height: 60px;
+            }
+
+            /* When scrolled to about section */
+            .logo-header.scrolled .logo-left {
+                top: 8px;
+                bottom: auto;
+                left: 10px;
+            }
+
+            .logo-header.scrolled .logo-right {
+                top: 8px;
+                right: 10px;
+            }
+
+            .logo-header.scrolled .logo-left img {
+                height: 45px;
+            }
+
+            .logo-header.scrolled .logo-right img {
                 height: 45px;
             }
         }
@@ -2821,9 +2897,21 @@
         let lastScrollTop = 0;
         const floatingNav = document.getElementById('floatingNav');
         const heroHeight = window.innerHeight * 0.8; // Show after 80% of viewport height
+        const logoHeader = document.querySelector('.logo-header');
+        const heroSection = document.getElementById('hero');
 
         window.addEventListener('scroll', () => {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Logo repositioning for mobile
+            if (window.innerWidth <= 768) {
+                const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+                if (scrollTop > heroBottom - 100) {
+                    logoHeader.classList.add('scrolled');
+                } else {
+                    logoHeader.classList.remove('scrolled');
+                }
+            }
             
             if (scrollTop > heroHeight) {
                 floatingNav.classList.add('visible');
