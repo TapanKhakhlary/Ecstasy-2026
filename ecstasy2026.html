@@ -389,7 +389,7 @@
         }
 
         .location-box {
-            max-width: 700px;
+            max-width: 900px;
             margin: 0 auto;
             background: rgba(26, 26, 26, 0.6);
             padding: 50px;
@@ -410,7 +410,7 @@
         .location-box p {
             font-size: 1.1rem;
             line-height: 1.8;
-            margin-bottom: 15px;
+            margin-bottom: 30px;
             color: #b0b0b0;
         }
 
@@ -418,6 +418,34 @@
             color: #FF6B35;
             text-decoration: none;
             font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .location-box a:hover {
+            color: #ff8555;
+        }
+
+        .map-container {
+            position: relative;
+            width: 100%;
+            padding-top: 40px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .map-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(255, 107, 53, 0.3);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 450px;
+            border: 0;
+            border-radius: 15px;
+            display: block;
         }
 
         .book-button {
@@ -1419,6 +1447,19 @@
             .about {
                 padding-top: 0;
             }
+
+            /* Location mobile styles */
+            .location-box {
+                padding: 30px 20px;
+            }
+
+            .map-container {
+                padding-top: 30px;
+            }
+
+            .map-container iframe {
+                height: 350px;
+            }
         }
 
         /* Landscape mobile fixes */
@@ -1752,6 +1793,27 @@
 
             .logo-header.scrolled .logo-right img {
                 height: 45px;
+            }
+
+            /* Location mobile styles */
+            .location-box {
+                padding: 25px 15px;
+            }
+
+            .location-box h3 {
+                font-size: 1.8rem;
+            }
+
+            .location-box p {
+                font-size: 0.95rem;
+            }
+
+            .map-container {
+                padding-top: 25px;
+            }
+
+            .map-container iframe {
+                height: 300px;
             }
         }
         
@@ -2113,9 +2175,10 @@
             <h2 class="section-title">Location</h2>
             <div class="location-box">
                 <h3>CIT KOKRAJHAR</h3>
-                <p>This year we'll be at the beautiful <a href="https://theseabirdresort.com/" target="_blank">CITK</a> </p>
-                <div style="margin-top: 30px;">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14285.227185426265!2d90.30897884999999!3d26.478064999999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3758f4d277d13e8d%3A0x233749495bfdb465!2sCentral%20Institute%20of%20Technology%2C%20Kokrajhar!5e0!3m2!1sen!2sin!4v1771521687456!5m2!1sen!2sin" width="100%" height="450" style="border:0; border-radius: 15px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <p>Central Institute of Technology, Kokrajhar<br>
+P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14285.227185426265!2d90.30897884999999!3d26.478064999999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3758f4d277d13e8d%3A0x233749495bfdb465!2sCentral%20Institute%20of%20Technology%2C%20Kokrajhar!5e0!3m2!1sen!2sin!4v1771521687456!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
