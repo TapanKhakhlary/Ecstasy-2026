@@ -1657,7 +1657,7 @@
         
         /* Top Logo Header */
         .logo-header {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             right: 0;
@@ -1667,6 +1667,31 @@
             padding: 15px 30px;
             background: transparent;
             z-index: 1001;
+        }
+
+        .logo-header.scrolled {
+            position: fixed;
+        }
+
+        .logo-header.scrolled .logo-left {
+            position: fixed;
+            top: 10px;
+            left: 15px;
+            right: auto;
+            transform: none;
+        }
+
+        .logo-header.scrolled .logo-right {
+            position: fixed;
+            top: 10px;
+            left: auto;
+            right: 15px;
+            transform: none;
+        }
+
+        .logo-header.scrolled .logo-left img,
+        .logo-header.scrolled .logo-right img {
+            height: 55px;
         }
 
         .logo-left,
@@ -1698,16 +1723,16 @@
             }
 
             .logo-left {
-                position: fixed;
-                top: 550px;
+                position: absolute;
+                top: 620px;
                 left: 50%;
                 transform: translateX(-50%);
                 transition: all 0.3s ease;
             }
 
             .logo-right {
-                position: fixed;
-                top: 15px;
+                position: absolute;
+                top: 80px;
                 left: 50%;
                 transform: translateX(-50%);
                 transition: all 0.3s ease;
@@ -1721,14 +1746,17 @@
                 height: 130px;
             }
 
-            /* When scrolled to about section */
+            /* When scrolled past hero section */
             .logo-header.scrolled .logo-left {
+                position: fixed;
                 top: 10px;
                 left: 15px;
+                right: auto;
                 transform: none;
             }
 
             .logo-header.scrolled .logo-right {
+                position: fixed;
                 top: 10px;
                 left: auto;
                 right: 15px;
@@ -1750,16 +1778,16 @@
             }
 
             .logo-left {
-                position: fixed;
-                top: 200px;
+                position: absolute;
+                top: 270px;
                 left: 50%;
                 transform: translateX(-50%);
                 transition: all 0.3s ease;
             }
 
             .logo-right {
-                position: fixed;
-                top: 10px;
+                position: absolute;
+                top: 70px;
                 left: 50%;
                 transform: translateX(-50%);
                 transition: all 0.3s ease;
@@ -1773,14 +1801,17 @@
                 height: 120px;
             }
 
-            /* When scrolled to about section */
+            /* When scrolled past hero section */
             .logo-header.scrolled .logo-left {
+                position: fixed;
                 top: 8px;
                 left: 10px;
+                right: auto;
                 transform: none;
             }
 
             .logo-header.scrolled .logo-right {
+                position: fixed;
                 top: 8px;
                 left: auto;
                 right: 10px;
@@ -1841,13 +1872,16 @@
                 right: 20px;
                 left: auto;
                 transform: none;
-                background: rgba(26, 26, 26, 0.7);
+                background: transparent;
                 padding: 8px;
-                border-radius: 12px;
+                border-radius: 0;
                 opacity: 0;
                 z-index: 1000;
                 position: fixed;
                 pointer-events: none;
+                box-shadow: none;
+                border: none;
+                backdrop-filter: none;
             }
             
             .floating-nav.visible {
@@ -2977,14 +3011,12 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
         window.addEventListener('scroll', () => {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             
-            // Logo repositioning for mobile
-            if (window.innerWidth <= 768) {
-                const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
-                if (scrollTop > heroBottom - 100) {
-                    logoHeader.classList.add('scrolled');
-                } else {
-                    logoHeader.classList.remove('scrolled');
-                }
+            // Logo repositioning - show in corners when scrolled past hero
+            const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+            if (scrollTop > heroBottom - 100) {
+                logoHeader.classList.add('scrolled');
+            } else {
+                logoHeader.classList.remove('scrolled');
             }
             
             if (scrollTop > heroHeight) {
