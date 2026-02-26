@@ -585,6 +585,191 @@
             color: #b0b0b0;
         }
 
+        .team-hierarchy {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .team-group {
+            background: rgba(26, 26, 26, 0.5);
+            border-radius: 25px;
+            padding: 30px;
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .team-group:hover {
+            border-color: #FFD700;
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .team-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: #FFD700;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            user-select: none;
+            transition: all 0.3s ease;
+        }
+
+        .team-title:hover {
+            color: #FFA500;
+        }
+
+        .team-title::after {
+            content: '▼';
+            font-size: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .team-group.collapsed .team-title::after {
+            transform: rotate(-90deg);
+        }
+
+        .team-content {
+            max-height: 1500px;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+            opacity: 1;
+        }
+
+        .team-group.collapsed .team-content {
+            max-height: 0;
+            opacity: 0;
+        }
+
+        .hierarchy-connector {
+            width: 2px;
+            height: 40px;
+            background: linear-gradient(to bottom, #FFD700, #FF6B35);
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .hierarchy-connector::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            background: #FFD700;
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+        }
+
+        .faculty-member {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 107, 53, 0.1));
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .student-members {
+            margin-top: 20px;
+        }
+
+        .student-member {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .student-member:hover {
+            background: rgba(255, 107, 53, 0.1);
+            border-color: #FF6B35;
+            transform: translateX(5px);
+        }
+
+        .student-member:last-child {
+            margin-bottom: 0;
+        }
+
+        .member-role-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .student-role-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: linear-gradient(135deg, #FF6B35, #FF8C61);
+            color: #fff;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hierarchy-member-photo {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 15px;
+            background: linear-gradient(135deg, #FF6B35, #9B59B6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            border-radius: 50%;
+            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.3);
+        }
+
+        .faculty-member .hierarchy-member-photo {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            font-size: 3rem;
+        }
+
+        .hierarchy-member-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .faculty-member .hierarchy-member-name {
+            font-size: 1.4rem;
+        }
+
+        .hierarchy-member-desc {
+            font-size: 0.85rem;
+            color: #b0b0b0;
+            line-height: 1.4;
+            margin-top: 10px;
+        }
+
         .artist-card {
             background: rgba(26, 26, 26, 0.7);
             border-radius: 20px;
@@ -827,6 +1012,15 @@
             font-size: 1rem;
         }
 
+        .schedule-details .venue {
+            color: #FFD700;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            opacity: 0.9;
+        }
+
         .schedule-details p {
             color: #b0b0b0;
             margin-top: 8px;
@@ -1017,6 +1211,11 @@
                 animation: logoFadeIn 1.5s ease-out, logoFloatMobile 3s ease-in-out 1.5s infinite;
             }
 
+            .members-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
             /* Reduce card sizes on mobile */
             .member-photo {
                 width: 120px;
@@ -1048,6 +1247,71 @@
             .member-info p,
             .artist-info p {
                 font-size: 0.85rem;
+            }
+
+            /* Team Hierarchy Mobile */
+            .team-hierarchy {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                margin-top: 40px;
+            }
+
+            .team-group {
+                padding: 25px 20px;
+            }
+
+            .team-title {
+                font-size: 1.3rem;
+                margin-bottom: 20px;
+            }
+
+            .team-group.collapsed .team-title {
+                margin-bottom: 0;
+            }
+
+            .team-title::after {
+                font-size: 1.2rem;
+            }
+
+            .hierarchy-member-photo {
+                width: 90px;
+                height: 90px;
+                font-size: 2.2rem;
+                margin-bottom: 12px;
+            }
+
+            .faculty-member .hierarchy-member-photo {
+                width: 110px;
+                height: 110px;
+                font-size: 2.8rem;
+            }
+
+            .hierarchy-member-name {
+                font-size: 1.1rem;
+            }
+
+            .faculty-member .hierarchy-member-name {
+                font-size: 1.3rem;
+            }
+
+            .hierarchy-member-desc {
+                font-size: 0.8rem;
+            }
+
+            .member-role-badge,
+            .student-role-badge {
+                font-size: 0.7rem;
+                padding: 3px 10px;
+            }
+
+            .hierarchy-connector {
+                height: 30px;
+                margin: 15px auto;
+            }
+
+            .student-member {
+                padding: 12px;
+                margin-bottom: 12px;
             }
 
             /* Optimize grids for mobile */
@@ -1407,6 +1671,75 @@
                 width: 110px;
                 height: 110px;
                 font-size: 2.5rem;
+            }
+
+            /* Team Hierarchy Extra Small */
+            .team-hierarchy {
+                gap: 25px;
+                margin-top: 30px;
+            }
+
+            .team-group {
+                padding: 20px 15px;
+            }
+
+            .team-title {
+                font-size: 1.1rem;
+                margin-bottom: 20px;
+            }
+
+            .team-group.collapsed .team-title {
+                margin-bottom: 0;
+            }
+
+            .team-title::after {
+                font-size: 1rem;
+            }
+
+            .hierarchy-member-photo {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+                margin-bottom: 10px;
+            }
+
+            .faculty-member .hierarchy-member-photo {
+                width: 100px;
+                height: 100px;
+                font-size: 2.5rem;
+            }
+
+            .hierarchy-member-name {
+                font-size: 1rem;
+            }
+
+            .faculty-member .hierarchy-member-name {
+                font-size: 1.2rem;
+            }
+
+            .hierarchy-member-desc {
+                font-size: 0.75rem;
+                line-height: 1.3;
+            }
+
+            .member-role-badge,
+            .student-role-badge {
+                font-size: 0.65rem;
+                padding: 3px 8px;
+            }
+
+            .hierarchy-connector {
+                height: 25px;
+                margin: 12px auto;
+            }
+
+            .student-member {
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+
+            .faculty-member {
+                padding: 15px;
             }
 
             .time-unit {
@@ -2185,19 +2518,10 @@
             </h2>
             <div class="about-content">
                 <p>
-                    This is our sixth annual conference, and each year it gets better and better.
-                    Our goal is to inspire you to create and build amazing things.
-                </p>
-                <p>
-                    This year's conference will be on the beach in San Diego, California. We can't
-                    think of a better place to connect with friends, old and new, than in a relaxed
-                    beach environment with sunny walks on the warm sand, and inspiring talks from
-                    people doing amazing things.
-                </p>
-                <p>
-                    You'll hear from people who are 'doers' and risk-takers. They're some of the
-                    world's best designers, founders, investors, engineers, executives, and they all
-                    have inspiring stories and valuable insight to share with you.
+                    ECSTASY is the flagship annual cultural and sports festival of CIT Kokrajhar,
+                    bringing together students, artists, athletes, and a vibrant youth audience 
+                    from across the region. The event offers strong brand visibility through stage 
+                    branding, digital promotions, and on-ground engagement.
                 </p>
             </div>
         </div>
@@ -2314,60 +2638,115 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
     <!-- Members Section -->
     <section class="members" id="members">
         <div class="container">
-            <h2 class="section-title">Our Team Members</h2>
+            <h2 class="section-title">Our Team Hierarchy</h2>
             <p style="text-align: center; color: #888888; margin-bottom: 40px;">Meet the amazing people making this event possible</p>
-            <div class="members-grid">
-                <div class="member-card">
-                    <div class="member-photo">?</div>
-                    <div class="member-info">
-                        <h3>Member Name</h3>
-                        <p class="position">Position/Role</p>
-                        <p>Brief description about the team member.</p>
+            
+            <div class="team-hierarchy">
+                <!-- Overall Coordination Team -->
+                <div class="team-group">
+                    <h3 class="team-title">Overall Coordination</h3>
+                    <div class="team-content">
+                    <div class="faculty-member">
+                        <div class="hierarchy-member-photo">?</div>
+                        <h4 class="hierarchy-member-name">Faculty Name</h4>
+                        <span class="member-role-badge">Faculty Advisor</span>
+                        <p class="hierarchy-member-desc">Overseeing all event activities</p>
+                    </div>
+                    
+                    <div class="hierarchy-connector"></div>
+                    
+                    <div class="student-members">
+                        <div class="student-member">
+                            <div class="hierarchy-member-photo">?</div>
+                            <h4 class="hierarchy-member-name">Student Name</h4>
+                            <span class="student-role-badge">President</span>
+                            <p class="hierarchy-member-desc">Leading student coordination</p>
+                        </div>
+                        <div class="student-member">
+                            <div class="hierarchy-member-photo">?</div>
+                            <h4 class="hierarchy-member-name">Student Name</h4>
+                            <span class="student-role-badge">Vice President</span>
+                            <p class="hierarchy-member-desc">Supporting overall management</p>
+                        </div>
+                    </div>
                     </div>
                 </div>
 
-                <div class="member-card">
-                    <div class="member-photo">?</div>
-                    <div class="member-info">
-                        <h3>Member Name</h3>
-                        <p class="position">Position/Role</p>
-                        <p>Brief description about the team member.</p>
+                <!-- Event Management Team -->
+                <div class="team-group">
+                    <h3 class="team-title">Event Management</h3>
+                    <div class="team-content">
+                    <div class="faculty-member">
+                        <div class="hierarchy-member-photo">?</div>
+                        <h4 class="hierarchy-member-name">Faculty Name</h4>
+                        <span class="member-role-badge">Faculty Coordinator</span>
+                        <p class="hierarchy-member-desc">Managing event operations</p>
+                    </div>
+                    
+                    <div class="hierarchy-connector"></div>
+                    
+                    <div class="student-members">
+                        <div class="student-member">
+                            <div class="hierarchy-member-photo">?</div>
+                            <h4 class="hierarchy-member-name">Student Name</h4>
+                            <span class="student-role-badge">Event Coordinator</span>
+                            <p class="hierarchy-member-desc">Coordinating all event activities</p>
+                        </div>
+                        <div class="student-member">
+                            <div class="hierarchy-member-photo">?</div>
+                            <h4 class="hierarchy-member-name">Student Name</h4>
+                            <span class="student-role-badge">General Secretary</span>
+                            <p class="hierarchy-member-desc">Managing documentation</p>
+                        </div>
+                    </div>
                     </div>
                 </div>
 
-                <div class="member-card">
-                    <div class="member-photo">?</div>
-                    <div class="member-info">
-                        <h3>Member Name</h3>
-                        <p class="position">Position/Role</p>
-                        <p>Brief description about the team member.</p>
+                <!-- Technical Team -->
+                <div class="team-group">
+                    <h3 class="team-title">Technical Team</h3>
+                    <div class="team-content">
+                    <div class="faculty-member">
+                        <div class="hierarchy-member-photo">?</div>
+                        <h4 class="hierarchy-member-name">Faculty Name</h4>
+                        <span class="member-role-badge">Faculty Mentor</span>
+                        <p class="hierarchy-member-desc">Guiding technical operations</p>
+                    </div>
+                    
+                    <div class="hierarchy-connector"></div>
+                    
+                    <div class="student-members">
+                        <div class="student-member">
+                            <div class="hierarchy-member-photo">?</div>
+                            <h4 class="hierarchy-member-name">Student Name</h4>
+                            <span class="student-role-badge">Technical Head</span>
+                            <p class="hierarchy-member-desc">Managing technical infrastructure</p>
+                        </div>
+                    </div>
                     </div>
                 </div>
 
-                <div class="member-card">
-                    <div class="member-photo">?</div>
-                    <div class="member-info">
-                        <h3>Member Name</h3>
-                        <p class="position">Position/Role</p>
-                        <p>Brief description about the team member.</p>
+                <!-- Creative Team -->
+                <div class="team-group">
+                    <h3 class="team-title">Creative Team</h3>
+                    <div class="team-content">
+                    <div class="faculty-member">
+                        <div class="hierarchy-member-photo">?</div>
+                        <h4 class="hierarchy-member-name">Faculty Name</h4>
+                        <span class="member-role-badge">Faculty Advisor</span>
+                        <p class="hierarchy-member-desc">Overseeing creative direction</p>
                     </div>
-                </div>
-
-                <div class="member-card">
-                    <div class="member-photo">?</div>
-                    <div class="member-info">
-                        <h3>Member Name</h3>
-                        <p class="position">Position/Role</p>
-                        <p>Brief description about the team member.</p>
+                    
+                    <div class="hierarchy-connector"></div>
+                    
+                    <div class="student-members">
+                        <div class="student-member">
+                            <div class="hierarchy-member-photo">?</div>
+                            <h4 class="hierarchy-member-name">Student Name</h4>
+                            <span class="student-role-badge">Creative Head</span>
+                            <p class="hierarchy-member-desc">Leading creative design</p>
+                        </div>
                     </div>
-                </div>
-
-                <div class="member-card">
-                    <div class="member-photo">?</div>
-                    <div class="member-info">
-                        <h3>Member Name</h3>
-                        <p class="position">Position/Role</p>
-                        <p>Brief description about the team member.</p>
                     </div>
                 </div>
             </div>
@@ -2484,114 +2863,98 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 <div class="schedule-content">
                 
                 <div class="schedule-item">
-                    <div class="schedule-time">9:00 AM - 9:30 AM</div>
+                    <div class="schedule-time">8:00 AM – 9:30 AM</div>
                     <div class="schedule-details">
-                        <h4>Flag Hosting by Director Sir</h4>
+                        <h4>Flag Hosting by Director sir</h4>
+                        <p class="venue">Administrative Building</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">9:45 AM - 10:45 AM</div>
+                    <div class="schedule-time">8:30 AM – 10:30 AM</div>
                     <div class="schedule-details">
-                        <h4>Cultural Rally By Student</h4>
+                        <h4>Cultural Rally</h4>
+                        <p class="venue">Administrative Building</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">10:45 AM - 11:30 AM</div>
-                    <div class="schedule-details">
-                        <h4>Quiz Competition (Group)</h4>
-                    </div>
-                </div>
-
-                <div class="schedule-item">
-                    <div class="schedule-time">10:45 AM - 11:30 AM</div>
+                    <div class="schedule-time">10:30 AM – 12:30 AM</div>
                     <div class="schedule-details">
                         <h4>Essay Writing Competition</h4>
+                        <p class="venue">BKB</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">10:45 AM - 11:30 PM</div>
+                    <div class="schedule-time">10:30 AM – 12:30 PM</div>
                     <div class="schedule-details">
                         <h4>Poem Writing Competition</h4>
+                        <p class="venue">BKB</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">11:30 AM - 12:30 PM</div>
+                    <div class="schedule-time">10:30 AM – 12:30 PM</div>
                     <div class="schedule-details">
-                        <h4>Extempore Speech Competition</h4>
+                        <h4>Speech Writing Competition</h4>
+                        <p class="venue">BKB</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">11:30 AM - 12:30 PM</div>
+                    <div class="schedule-time">10:30 AM – 12:30 PM</div>
                     <div class="schedule-details">
-                        <h4>Pin Point Painting (Painting)</h4>
+                        <h4>Letter Writing Competition</h4>
+                        <p class="venue">BKB</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">11:30 AM - 12:30 PM</div>
+                    <div class="schedule-time">10:30 AM – 11:30 AM</div>
                     <div class="schedule-details">
-                        <h4>Bottle Painting Competition</h4>
-                    </div>
-                </div>
-
-                <div class="schedule-item break">
-                    <div class="schedule-time">12:30 PM - 1:30 PM</div>
-                    <div class="schedule-details">
-                        <h4>Short Break</h4>
+                        <h4>Rangoli Competition</h4>
+                        <p class="venue">Classroom</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">1:30 PM - 2:30 PM</div>
+                    <div class="schedule-time">11:30 AM – 12:30 PM</div>
+                    <div class="schedule-details">
+                        <h4>Mehnedi Competition</h4>
+                        <p class="venue">Classroom</p>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">1:30 PM – 2:30 PM</div>
                     <div class="schedule-details">
                         <h4>Face Painting Competition</h4>
+                        <p class="venue">Gallery -3</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">1:30 PM - 2:30 PM</div>
+                    <div class="schedule-time">2:30 PM – 3:30 PM</div>
                     <div class="schedule-details">
-                        <h4>Rangoli Design</h4>
+                        <h4>Bottle Painting / Pin Point</h4>
+                        <p class="venue">Gallery -3</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">2:30 PM - 4:00 PM</div>
+                    <div class="schedule-time">3:30PM – 4:20 PM</div>
                     <div class="schedule-details">
                         <h4>Doodle Art</h4>
+                        <p class="venue">Gallery -3</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">2:30 PM - 4:00 PM</div>
+                    <div class="schedule-time">4:00PM – 5:30 PM</div>
                     <div class="schedule-details">
-                        <h4>Reborn Artwork (Recycle Art)</h4>
-                    </div>
-                </div>
-
-                <div class="schedule-item">
-                    <div class="schedule-time">2:30 PM - 4:00 PM</div>
-                    <div class="schedule-details">
-                        <h4>Art in every fold (paper fold)</h4>
-                    </div>
-                </div>
-
-                <div class="schedule-item">
-                    <div class="schedule-time">2:30 PM - 4:00 PM</div>
-                    <div class="schedule-details">
-                        <h4>Mehendi Competition</h4>
-                    </div>
-                </div>
-
-                <div class="schedule-item">
-                    <div class="schedule-time">4:00 PM - 5:00 PM</div>
-                    <div class="schedule-details">
-                        <h4>Poem Recitation</h4>
+                        <h4>Poem Recitation /Extempore speech/Prayer Competition</h4>
+                        <p class="venue">VC3</p>
                     </div>
                 </div>
                 </div>
@@ -2602,137 +2965,130 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 <div class="schedule-content">
                 
                 <div class="schedule-item">
-                    <div class="schedule-time">4:00 AM - 7:00 AM</div>
+                    <div class="schedule-time">4:00AM</div>
                     <div class="schedule-details">
                         <h4>Marathon</h4>
+                        <p class="venue">Gate to DV (UPDOWN)</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">9:30 AM - 10:00 AM</div>
+                    <div class="schedule-time">9:30AM – 12:00 PM</div>
                     <div class="schedule-details">
-                        <h4>Literary Olympiad Competition (Group)</h4>
+                        <h4>Quiz Competition</h4>
+                        <p class="venue">Main Stage</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">10:00 AM - 11:30 AM</div>
+                    <div class="schedule-time">10:00AM – 10:30AM</div>
                     <div class="schedule-details">
-                        <h4>Mind Match Competition</h4>
+                        <h4>Reborn Artwork</h4>
+                        <p class="venue">Classroom</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">11:30 AM - 12:30 PM</div>
+                    <div class="schedule-time">10:30 AM – 11:30 AM</div>
                     <div class="schedule-details">
-                        <h4>Treasure Hunt</h4>
-                    </div>
-                </div>
-
-                <div class="schedule-item break">
-                    <div class="schedule-time">12:30 PM - 1:30 PM</div>
-                    <div class="schedule-details">
-                        <h4>Short Break</h4>
+                        <h4>Art in every fold</h4>
+                        <p class="venue">Classroom</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">1:30 PM - 3:00 PM</div>
+                    <div class="schedule-time">11:30 AM – 12:30 PM</div>
+                    <div class="schedule-details">
+                        <h4>Tresure Hunt</h4>
+                        <p class="venue">CIT Campus</p>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">1:30 PM – 2:30 PM</div>
                     <div class="schedule-details">
                         <h4>Melody Showdown</h4>
+                        <p class="venue">BKB</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">1:00 PM - 1:30 PM</div>
+                    <div class="schedule-time">1:30 PM – 3:00 PM</div>
                     <div class="schedule-details">
-                        <h4>Singing Competition</h4>
+                        <h4>Semidclassical dance competition</h4>
+                        <p class="venue">Main Stage</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">1:30 PM - 3:00 PM</div>
+                    <div class="schedule-time">3:00 PM – 3:30 PM</div>
                     <div class="schedule-details">
-                        <h4>Semi Classical Dance Competition</h4>
+                        <h4>Mimes Mosaic</h4>
+                        <p class="venue">Main Stage</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">3:00 PM - 5:00 PM</div>
-                    <div class="schedule-details">
-                        <h4>Ramp Walk (First Round)</h4>
-                    </div>
-                </div>
-
-                <div class="schedule-item">
-                    <div class="schedule-time">5:00 PM - 6:00 PM</div>
+                    <div class="schedule-time">3:30 PM – 4:00 PM</div>
                     <div class="schedule-details">
                         <h4>Variety Show</h4>
+                        <p class="venue">Main Stage</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">5:05 PM - 5:15 PM</div>
+                    <div class="schedule-time">4:00 PM – 5:00 PM</div>
                     <div class="schedule-details">
-                        <h4>Bagurumba Dance Group</h4>
+                        <h4>Variety Show</h4>
+                        <p class="venue">Main Stage</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">5:15 PM - 5:25 PM</div>
+                    <div class="schedule-time">5:00 PM – 6:30 PM</div>
                     <div class="schedule-details">
-                        <h4>Group-2</h4>
+                        <h4>Ramp Walk (First Round)</h4>
+                        <p class="venue">Main Stage</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">5:25 PM - 5:40 PM</div>
+                    <div class="schedule-time">6:30 PM – 7:00 PM</div>
                     <div class="schedule-details">
-                        <h4>Group-3</h4>
+                        <h4>Variety Show</h4>
+                        <p class="venue">Main Stage</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">5:40 PM - 5:50 PM</div>
+                    <div class="schedule-time">7:00 PM – 8:00 PM</div>
                     <div class="schedule-details">
-                        <h4>Group-4</h4>
+                        <h4>Khobam Band (MORISIKA)</h4>
+                        <p class="venue">Main Stage</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">5:50 PM - 6:00 PM</div>
+                    <div class="schedule-time">8:00 PM – 9:00 PM</div>
                     <div class="schedule-details">
-                        <h4>Bagurumba Dance Group</h4>
-                    </div>
-                </div>
-
-                <div class="schedule-item break">
-                    <div class="schedule-time">6:00 PM - 7:30 PM</div>
-                    <div class="schedule-details">
-                        <h4>Prize Distribution</h4>
+                        <h4>Ramp walk(Title Round)</h4>
+                        <p class="venue">Main Stage</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">7:30 PM - 9:00 PM</div>
+                    <div class="schedule-time">9:00 PM – 10:00 PM</div>
                     <div class="schedule-details">
-                        <p class="artist-name">The Khobam Club</p>
-                        <h4>MORISIKA</h4>
+                        <h4>Nava Niru (Local Assamese artist)</h4>
+                        <p class="venue">Main Stage</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">9:00 PM - 10:00 PM</div>
+                    <div class="schedule-time">10:00 PM – 11:30 PM</div>
                     <div class="schedule-details">
-                        <p class="artist-name">NOVO Band</p>
-                        <h4>Rock Band</h4>
-                    </div>
-                </div>
-
-                <div class="schedule-item">
-                    <div class="schedule-time">10:00 PM - 11:30 PM</div>
-                    <div class="schedule-details">
-                        <h4>Local Artist</h4>
+                        <h4>Shilo the band (Local Boro Artist)</h4>
+                        <p class="venue">Main Stage</p>
                     </div>
                 </div>
                 </div>
@@ -2743,86 +3099,98 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 <div class="schedule-content">
                 
                 <div class="schedule-item">
-                    <div class="schedule-time">10:00 AM - 11:00 AM</div>
+                    <div class="schedule-time">9:30 AM – 12:00 PM</div>
                     <div class="schedule-details">
                         <h4>Debate Competition</h4>
+                        <p class="venue">Main Stage</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">11:00 AM - 12:30 PM</div>
+                    <div class="schedule-time">1:00 PM – 2:00 PM</div>
                     <div class="schedule-details">
-                        <h4>Memes Mosaic</h4>
-                    </div>
-                </div>
-
-                <div class="schedule-item break">
-                    <div class="schedule-time">12:30 PM - 1:30 PM</div>
-                    <div class="schedule-details">
-                        <h4>Short Break</h4>
+                        <h4>BKE Stunt</h4>
+                        <p class="venue">CIT Campus</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">1:30 PM - 2:30 PM</div>
-                    <div class="schedule-details">
-                        <h4>Mono Acting Competition</h4>
-                    </div>
-                </div>
-
-                <div class="schedule-item">
-                    <div class="schedule-time">2:45 PM - 3:30 PM</div>
+                    <div class="schedule-time">2:30 PM – 3:00 PM</div>
                     <div class="schedule-details">
                         <h4>Flash Mob</h4>
+                        <p class="venue">CIT Bus stand</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">3:40 PM - 4:50 PM</div>
+                    <div class="schedule-time">3:00 PM – 3:10 PM</div>
                     <div class="schedule-details">
-                        <h4>Weaves of Fusion (Questioning Round)</h4>
-                    </div>
-                </div>
-
-                <div class="schedule-item break">
-                    <div class="schedule-time">5:00 PM - 5:15 PM</div>
-                    <div class="schedule-details">
-                        <h4>Lighting of Lamp - Chief Guest</h4>
+                        <h4>Lighting of Lamp Chief Guest</h4>
+                        <p class="venue">Main Stage</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">5:20 PM - 5:35 PM</div>
+                    <div class="schedule-time">3:10 PM – 3:30 PM</div>
                     <div class="schedule-details">
                         <h4>Speech by Dean of Student</h4>
+                        <p class="venue">Main Stage</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">5:40 PM - 6:00 PM</div>
+                    <div class="schedule-time">3:30 PM– 5:00 PM</div>
                     <div class="schedule-details">
-                        <h4>Bagurumba-Dance by Students</h4>
+                        <h4>Prize Distribution</h4>
+                        <p class="venue">Main Stage</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">6:10 PM - 6:30 PM</div>
+                    <div class="schedule-time">5:15 PM– 6:00 PM</div>
+                    <div class="schedule-details">
+                        <h4>Bagurumba Dance</h4>
+                        <p class="venue">Main Stage</p>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">6:00 PM – 6:30 PM</div>
                     <div class="schedule-details">
                         <h4>Ramdhenu Bihu Dol</h4>
+                        <p class="venue">Main Stage</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">6:45 PM - 8:00 PM</div>
+                    <div class="schedule-time">6:30 PM – 8:30 PM</div>
                     <div class="schedule-details">
-                        <h4>Weaves of Fusion (FINAL ROUND)</h4>
+                        <h4>Ramp walk (FINAL ROUND)</h4>
+                        <p class="venue">Main stage</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">8:00 PM - 11:30 PM</div>
+                    <div class="schedule-time">8:30 PM – 9:15 PM</div>
                     <div class="schedule-details">
-                        <h4>Day 3 Main Artist Performance</h4>
+                        <h4>Swayamsewa Basumutary</h4>
+                        <p class="venue">Main Stage</p>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">9:30 PM – 10:15 PM</div>
+                    <div class="schedule-details">
+                        <h4>NOVO Band</h4>
+                        <p class="venue">Main Stage</p>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">10:15PM – 11:20PM</div>
+                    <div class="schedule-details">
+                        <h4>DJ (One East)</h4>
+                        <p class="venue">Main Stage</p>
                     </div>
                 </div>
                 </div>
@@ -3094,6 +3462,23 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 }
             });
         });
+
+        // Team Hierarchy Accordion
+        document.querySelectorAll('.team-title').forEach(title => {
+            title.addEventListener('click', function() {
+                const teamGroup = this.closest('.team-group');
+                teamGroup.classList.toggle('collapsed');
+            });
+        });
+
+        // On mobile, collapse all team groups by default except the first one
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.team-group').forEach((group, index) => {
+                if (index > 0) {
+                    group.classList.add('collapsed');
+                }
+            });
+        }
 
         console.log('🎉 Ecstasy 2026 - Interactive features loaded!');
     </script>
