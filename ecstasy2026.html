@@ -587,52 +587,102 @@
 
         .team-hierarchy {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
             margin-top: 60px;
         }
 
         .team-group {
-            background: rgba(26, 26, 26, 0.5);
-            border-radius: 25px;
-            padding: 30px;
-            border: 2px solid rgba(255, 215, 0, 0.2);
-            transition: all 0.4s ease;
+            background: linear-gradient(145deg, rgba(30, 30, 30, 0.95), rgba(20, 20, 20, 0.98));
+            border-radius: 20px;
+            padding: 32px 28px;
+            border: 2px solid rgba(255, 215, 0, 0.25);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+                        0 2px 8px rgba(255, 215, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .team-group::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 20px;
+            padding: 2px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(255, 107, 53, 0.15));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
 
         .team-group:hover {
-            border-color: #FFD700;
-            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.2);
-            transform: translateY(-5px);
+            border-color: rgba(255, 215, 0, 0.6);
+            box-shadow: 0 16px 48px rgba(255, 215, 0, 0.25),
+                        0 4px 16px rgba(255, 107, 53, 0.15);
+            transform: translateY(-8px);
+        }
+
+        .team-group:hover::before {
+            opacity: 1;
         }
 
         .team-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
             color: #FFD700;
             text-align: center;
-            margin-bottom: 30px;
-            font-weight: 600;
+            margin-bottom: 28px;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             user-select: none;
             transition: all 0.3s ease;
+            padding: 12px 20px;
+            background: rgba(255, 215, 0, 0.08);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-title::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .team-title:hover::before {
+            left: 100%;
         }
 
         .team-title:hover {
-            color: #FFA500;
+            color: #FFF;
+            background: rgba(255, 215, 0, 0.15);
+            border-color: rgba(255, 215, 0, 0.4);
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.2);
         }
 
         .team-title::after {
             content: '▼';
-            font-size: 1rem;
-            transition: transform 0.3s ease;
+            font-size: 0.9rem;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #FFA500;
         }
 
         .team-group.collapsed .team-title::after {
@@ -652,11 +702,16 @@
         }
 
         .hierarchy-connector {
-            width: 2px;
-            height: 40px;
-            background: linear-gradient(to bottom, #FFD700, #FF6B35);
-            margin: 20px auto;
+            width: 3px;
+            height: 45px;
+            background: linear-gradient(to bottom, 
+                #FFD700 0%, 
+                #FFA500 50%, 
+                #FF6B35 100%);
+            margin: 25px auto;
             position: relative;
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
         }
 
         .hierarchy-connector::before {
@@ -665,19 +720,63 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 12px;
-            height: 12px;
+            width: 14px;
+            height: 14px;
             background: #FFD700;
             border-radius: 50%;
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.6),
+                        inset 0 1px 3px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .hierarchy-connector::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 8px solid #FF6B35;
+            filter: drop-shadow(0 2px 4px rgba(255, 107, 53, 0.4));
         }
 
         .faculty-member {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 107, 53, 0.1));
-            border-radius: 15px;
-            padding: 20px;
+            background: linear-gradient(145deg, 
+                rgba(255, 215, 0, 0.12) 0%, 
+                rgba(255, 180, 0, 0.08) 50%,
+                rgba(255, 107, 53, 0.08) 100%);
+            border-radius: 18px;
+            padding: 28px 22px;
             text-align: center;
-            border: 1px solid rgba(255, 215, 0, 0.3);
+            border: 1.5px solid rgba(255, 215, 0, 0.35);
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.15),
+                        inset 0 1px 3px rgba(255, 215, 0, 0.1);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .faculty-member::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 215, 0, 0.5), 
+                transparent);
+            border-radius: 2px;
+        }
+
+        .faculty-member:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 28px rgba(255, 215, 0, 0.25),
+                        inset 0 1px 3px rgba(255, 215, 0, 0.15);
         }
 
         .student-members {
@@ -685,19 +784,43 @@
         }
 
         .student-member {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 15px;
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.04),
+                rgba(255, 107, 53, 0.06));
+            border-radius: 14px;
+            padding: 18px 16px;
+            margin-bottom: 14px;
             text-align: center;
-            border: 1px solid rgba(255, 107, 53, 0.2);
-            transition: all 0.3s ease;
+            border: 1.5px solid rgba(255, 107, 53, 0.25);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .student-member::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #FF6B35, #FF8C61);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .student-member:hover {
-            background: rgba(255, 107, 53, 0.1);
-            border-color: #FF6B35;
-            transform: translateX(5px);
+            background: linear-gradient(135deg, 
+                rgba(255, 107, 53, 0.12),
+                rgba(255, 140, 97, 0.08));
+            border-color: rgba(255, 107, 53, 0.5);
+            transform: translateX(8px);
+            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.25);
+        }
+
+        .student-member:hover::before {
+            opacity: 1;
         }
 
         .student-member:last-child {
@@ -706,68 +829,127 @@
 
         .member-role-badge {
             display: inline-block;
-            padding: 4px 12px;
-            background: linear-gradient(135deg, #FFD700, #FFA500);
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
             color: #000;
-            border-radius: 15px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-top: 8px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-top: 10px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4),
+                        inset 0 1px 2px rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 215, 0, 0.5);
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .member-role-badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5),
+                        inset 0 1px 2px rgba(255, 255, 255, 0.4);
         }
 
         .student-role-badge {
             display: inline-block;
-            padding: 4px 12px;
-            background: linear-gradient(135deg, #FF6B35, #FF8C61);
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8C61 100%);
             color: #fff;
-            border-radius: 15px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-top: 8px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-top: 10px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4),
+                        inset 0 1px 2px rgba(255, 140, 97, 0.3);
+            border: 1px solid rgba(255, 107, 53, 0.5);
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .student-role-badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.5),
+                        inset 0 1px 2px rgba(255, 140, 97, 0.4);
         }
 
         .hierarchy-member-photo {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 15px;
-            background: linear-gradient(135deg, #FF6B35, #9B59B6);
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 16px;
+            background: linear-gradient(135deg, #FF6B35 0%, #9B59B6 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: white;
             border-radius: 50%;
-            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.3);
+            box-shadow: 0 6px 24px rgba(255, 107, 53, 0.35),
+                        inset 0 2px 6px rgba(0, 0, 0, 0.2);
+            border: 3px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .hierarchy-member-photo::after {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 20%;
+            width: 30%;
+            height: 30%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+            border-radius: 50%;
+        }
+
+        .student-member:hover .hierarchy-member-photo {
+            transform: scale(1.08);
+            box-shadow: 0 8px 28px rgba(255, 107, 53, 0.45),
+                        inset 0 2px 6px rgba(0, 0, 0, 0.2);
         }
 
         .faculty-member .hierarchy-member-photo {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            font-size: 3rem;
+            width: 110px;
+            height: 110px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            font-size: 2.8rem;
+            box-shadow: 0 8px 28px rgba(255, 215, 0, 0.4),
+                        inset 0 2px 6px rgba(0, 0, 0, 0.15);
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .faculty-member:hover .hierarchy-member-photo {
+            transform: scale(1.05);
+            box-shadow: 0 10px 32px rgba(255, 215, 0, 0.5),
+                        inset 0 2px 6px rgba(0, 0, 0, 0.15);
         }
 
         .hierarchy-member-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.05rem;
             color: #ffffff;
             font-weight: 600;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            letter-spacing: 0.3px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .faculty-member .hierarchy-member-name {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
         .hierarchy-member-desc {
-            font-size: 0.85rem;
-            color: #b0b0b0;
-            line-height: 1.4;
-            margin-top: 10px;
+            font-size: 0.8rem;
+            color: #c0c0c0;
+            line-height: 1.5;
+            margin-top: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            opacity: 0.9;
         }
 
         .artist-card {
@@ -1252,17 +1434,19 @@
             /* Team Hierarchy Mobile */
             .team-hierarchy {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 25px;
                 margin-top: 40px;
             }
 
             .team-group {
-                padding: 25px 20px;
+                padding: 24px 20px;
             }
 
             .team-title {
-                font-size: 1.3rem;
+                font-size: 0.95rem;
                 margin-bottom: 20px;
+                padding: 10px 16px;
+                letter-spacing: 1.5px;
             }
 
             .team-group.collapsed .team-title {
@@ -1270,48 +1454,52 @@
             }
 
             .team-title::after {
-                font-size: 1.2rem;
+                font-size: 0.85rem;
             }
 
             .hierarchy-member-photo {
-                width: 90px;
-                height: 90px;
-                font-size: 2.2rem;
-                margin-bottom: 12px;
+                width: 85px;
+                height: 85px;
+                font-size: 2rem;
+                margin-bottom: 14px;
             }
 
             .faculty-member .hierarchy-member-photo {
-                width: 110px;
-                height: 110px;
-                font-size: 2.8rem;
+                width: 100px;
+                height: 100px;
+                font-size: 2.5rem;
             }
 
             .hierarchy-member-name {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
 
             .faculty-member .hierarchy-member-name {
-                font-size: 1.3rem;
+                font-size: 1.15rem;
             }
 
             .hierarchy-member-desc {
-                font-size: 0.8rem;
+                font-size: 0.75rem;
             }
 
             .member-role-badge,
             .student-role-badge {
-                font-size: 0.7rem;
-                padding: 3px 10px;
+                font-size: 0.65rem;
+                padding: 5px 14px;
             }
 
             .hierarchy-connector {
-                height: 30px;
-                margin: 15px auto;
+                height: 35px;
+                margin: 18px auto;
             }
 
             .student-member {
-                padding: 12px;
+                padding: 14px;
                 margin-bottom: 12px;
+            }
+
+            .faculty-member {
+                padding: 22px 18px;
             }
 
             /* Optimize grids for mobile */
@@ -1675,17 +1863,19 @@
 
             /* Team Hierarchy Extra Small */
             .team-hierarchy {
-                gap: 25px;
+                gap: 20px;
                 margin-top: 30px;
             }
 
             .team-group {
-                padding: 20px 15px;
+                padding: 20px 16px;
             }
 
             .team-title {
-                font-size: 1.1rem;
-                margin-bottom: 20px;
+                font-size: 0.85rem;
+                margin-bottom: 18px;
+                padding: 9px 14px;
+                letter-spacing: 1.2px;
             }
 
             .team-group.collapsed .team-title {
@@ -1693,53 +1883,61 @@
             }
 
             .team-title::after {
-                font-size: 1rem;
+                font-size: 0.75rem;
             }
 
             .hierarchy-member-photo {
-                width: 80px;
-                height: 80px;
-                font-size: 2rem;
-                margin-bottom: 10px;
+                width: 75px;
+                height: 75px;
+                font-size: 1.8rem;
+                margin-bottom: 12px;
+                border: 2px solid rgba(255, 255, 255, 0.15);
             }
 
             .faculty-member .hierarchy-member-photo {
-                width: 100px;
-                height: 100px;
-                font-size: 2.5rem;
+                width: 90px;
+                height: 90px;
+                font-size: 2.2rem;
+                border: 2px solid rgba(255, 255, 255, 0.2);
             }
 
             .hierarchy-member-name {
-                font-size: 1rem;
+                font-size: 0.95rem;
             }
 
             .faculty-member .hierarchy-member-name {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
             }
 
             .hierarchy-member-desc {
-                font-size: 0.75rem;
-                line-height: 1.3;
+                font-size: 0.7rem;
+                line-height: 1.4;
             }
 
             .member-role-badge,
             .student-role-badge {
-                font-size: 0.65rem;
-                padding: 3px 8px;
+                font-size: 0.6rem;
+                padding: 5px 12px;
             }
 
             .hierarchy-connector {
-                height: 25px;
-                margin: 12px auto;
+                height: 30px;
+                margin: 15px auto;
+                width: 2px;
+            }
+
+            .hierarchy-connector::before {
+                width: 12px;
+                height: 12px;
             }
 
             .student-member {
-                padding: 10px;
+                padding: 12px;
                 margin-bottom: 10px;
             }
 
             .faculty-member {
-                padding: 15px;
+                padding: 18px 14px;
             }
 
             .time-unit {
