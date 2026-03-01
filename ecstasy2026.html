@@ -586,25 +586,58 @@
         }
 
         .team-hierarchy {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            display: flex;
             gap: 35px;
             margin-top: 60px;
+            min-height: 600px;
+            align-items: flex-start;
         }
 
-        .team-group {
+        .team-sidebar {
+            flex: 0 0 320px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            position: sticky;
+            top: 100px;
+            max-height: calc(100vh - 150px);
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .team-sidebar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .team-sidebar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 3px;
+        }
+
+        .team-sidebar::-webkit-scrollbar-thumb {
+            background: rgba(255, 215, 0, 0.3);
+            border-radius: 3px;
+        }
+
+        .team-sidebar::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 215, 0, 0.5);
+        }
+
+        .team-details-panel {
+            flex: 1;
+            min-height: 500px;
             background: linear-gradient(145deg, rgba(30, 30, 30, 0.95), rgba(20, 20, 20, 0.98));
             border-radius: 20px;
-            padding: 32px 28px;
+            padding: 40px;
             border: 2px solid rgba(255, 215, 0, 0.25);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
                         0 2px 8px rgba(255, 215, 0, 0.1);
             backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
         }
 
-        .team-group::before {
+        .team-details-panel::before {
             content: '';
             position: absolute;
             top: 0;
@@ -617,88 +650,201 @@
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask-composite: exclude;
+            opacity: 0.5;
+        }
+
+        .team-details-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .team-details-header {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            color: #FFD700;
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .empty-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            min-height: 400px;
+            color: #888;
+            text-align: center;
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+
+        .empty-state-text {
+            font-size: 1.2rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .details-empty-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            min-height: 400px;
+            color: #888;
+            text-align: center;
+        }
+
+        .details-empty-state .empty-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+
+        .details-empty-state h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            color: #aaa;
+            margin-bottom: 10px;
+        }
+
+        .details-empty-state p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            color: #777;
+        }
+
+        .details-header {
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .details-header h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            color: #FFD700;
+            text-align: center;
+            margin: 0;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .team-group {
+            background: linear-gradient(145deg, rgba(30, 30, 30, 0.95), rgba(20, 20, 20, 0.98));
+            border-radius: 16px;
+            padding: 18px 20px;
+            border: 2px solid rgba(255, 215, 0, 0.25);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+        }
+
+        .team-group::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 16px;
+            padding: 2px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(255, 107, 53, 0.15));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
             opacity: 0;
-            transition: opacity 0.4s ease;
+            transition: opacity 0.3s ease;
         }
 
         .team-group:hover {
-            border-color: rgba(255, 215, 0, 0.6);
-            box-shadow: 0 16px 48px rgba(255, 215, 0, 0.25),
-                        0 4px 16px rgba(255, 107, 53, 0.15);
-            transform: translateY(-8px);
+            border-color: rgba(255, 215, 0, 0.5);
+            box-shadow: 0 8px 24px rgba(255, 215, 0, 0.2);
+            transform: translateX(5px);
         }
 
         .team-group:hover::before {
             opacity: 1;
         }
 
+        .team-group.active {
+            border-color: rgba(255, 215, 0, 0.8);
+            background: linear-gradient(145deg, rgba(255, 215, 0, 0.15), rgba(255, 180, 0, 0.1));
+            box-shadow: 0 8px 28px rgba(255, 215, 0, 0.3);
+        }
+
+        .team-group.active::before {
+            opacity: 1;
+        }
+
+        .team-group.active .team-title {
+            color: #FFF;
+            background: rgba(255, 215, 0, 0.2);
+        }
+
         .team-title {
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             color: #FFD700;
             text-align: center;
-            margin-bottom: 28px;
+            margin-bottom: 0;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             cursor: pointer;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             gap: 12px;
             user-select: none;
             transition: all 0.3s ease;
-            padding: 12px 20px;
-            background: rgba(255, 215, 0, 0.08);
-            border-radius: 12px;
-            border: 1px solid rgba(255, 215, 0, 0.2);
+            padding: 0;
+            background: transparent;
+            border-radius: 0;
+            border: none;
             position: relative;
-            overflow: hidden;
+            overflow: visible;
         }
 
         .team-title::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .team-title:hover::before {
-            left: 100%;
+            display: none;
         }
 
         .team-title:hover {
             color: #FFF;
-            background: rgba(255, 215, 0, 0.15);
-            border-color: rgba(255, 215, 0, 0.4);
-            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.2);
+            background: transparent;
+            border-color: transparent;
+            box-shadow: none;
         }
 
         .team-title::after {
-            content: '▼';
-            font-size: 0.9rem;
+            content: '▶';
+            font-size: 0.75rem;
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             color: #FFA500;
         }
 
+        .team-group.active .team-title::after {
+            transform: rotate(90deg);
+        }
+
         .team-group.collapsed .team-title::after {
-            transform: rotate(-90deg);
+            transform: rotate(0deg);
         }
 
         .team-content {
-            max-height: 1500px;
-            overflow: hidden;
-            transition: max-height 0.4s ease, opacity 0.3s ease;
-            opacity: 1;
-        }
-
-        .team-group.collapsed .team-content {
-            max-height: 0;
-            opacity: 0;
+            display: none;
         }
 
         .hierarchy-connector {
@@ -1433,20 +1579,33 @@
 
             /* Team Hierarchy Mobile */
             .team-hierarchy {
-                grid-template-columns: 1fr;
-                gap: 25px;
-                margin-top: 40px;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .team-sidebar {
+                flex: 1;
+                width: 100%;
+                max-height: none;
+                position: static;
+            }
+
+            .team-details-panel {
+                min-height: 400px;
+                padding: 30px 20px;
+            }
+
+            .details-header h2 {
+                font-size: 1.4rem;
             }
 
             .team-group {
-                padding: 24px 20px;
+                padding: 16px 18px;
             }
 
             .team-title {
-                font-size: 0.95rem;
-                margin-bottom: 20px;
-                padding: 10px 16px;
-                letter-spacing: 1.5px;
+                font-size: 0.9rem;
+                letter-spacing: 1.2px;
             }
 
             .team-group.collapsed .team-title {
@@ -1454,7 +1613,7 @@
             }
 
             .team-title::after {
-                font-size: 0.85rem;
+                font-size: 0.75rem;
             }
 
             .hierarchy-member-photo {
@@ -2840,8 +2999,10 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
             <p style="text-align: center; color: #888888; margin-bottom: 40px;">Meet the amazing people making this event possible</p>
             
             <div class="team-hierarchy">
+                <!-- Left Sidebar with Team Navigation -->
+                <div class="team-sidebar">
                 <!-- Team 1: Overall Coordination -->
-                <div class="team-group">
+                <div class="team-group" data-team="1">
                     <h3 class="team-title">Overall Coordination</h3>
                     <div class="team-content">
                     <div class="faculty-member">
@@ -2863,7 +3024,7 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 </div>
 
                 <!-- Team 2: Event Management -->
-                <div class="team-group">
+                <div class="team-group" data-team="2">
                     <h3 class="team-title">Event Management</h3>
                     <div class="team-content">
                     <div class="faculty-member">
@@ -2885,7 +3046,7 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 </div>
 
                 <!-- Team 3: Cultural Activities -->
-                <div class="team-group">
+                <div class="team-group" data-team="3">
                     <h3 class="team-title">Cultural Activities</h3>
                     <div class="team-content">
                     <div class="faculty-member">
@@ -2907,7 +3068,7 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 </div>
 
                 <!-- Team 4: Technical Team -->
-                <div class="team-group">
+                <div class="team-group" data-team="4">
                     <h3 class="team-title">Technical Team</h3>
                     <div class="team-content">
                     <div class="faculty-member">
@@ -2929,7 +3090,7 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 </div>
 
                 <!-- Team 5: Publicity & Media -->
-                <div class="team-group">
+                <div class="team-group" data-team="5">
                     <h3 class="team-title">Publicity & Media</h3>
                     <div class="team-content">
                     <div class="faculty-member">
@@ -2951,7 +3112,7 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 </div>
 
                 <!-- Team 6: Sponsorship -->
-                <div class="team-group">
+                <div class="team-group" data-team="6">
                     <h3 class="team-title">Sponsorship</h3>
                     <div class="team-content">
                     <div class="faculty-member">
@@ -2973,7 +3134,7 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 </div>
 
                 <!-- Team 7: Stage & Decorations -->
-                <div class="team-group">
+                <div class="team-group" data-team="7">
                     <h3 class="team-title">Stage & Decorations</h3>
                     <div class="team-content">
                     <div class="faculty-member">
@@ -2995,7 +3156,7 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 </div>
 
                 <!-- Team 8: Hospitality -->
-                <div class="team-group">
+                <div class="team-group" data-team="8">
                     <h3 class="team-title">Hospitality</h3>
                     <div class="team-content">
                     <div class="faculty-member">
@@ -3017,7 +3178,7 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 </div>
 
                 <!-- Team 9: Security & Discipline -->
-                <div class="team-group">
+                <div class="team-group" data-team="9">
                     <h3 class="team-title">Security & Discipline</h3>
                     <div class="team-content">
                     <div class="faculty-member">
@@ -3039,7 +3200,7 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 </div>
 
                 <!-- Team 10: Registration & Documentation -->
-                <div class="team-group">
+                <div class="team-group" data-team="10">
                     <h3 class="team-title">Registration & Documentation</h3>
                     <div class="team-content">
                     <div class="faculty-member">
@@ -3061,7 +3222,7 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 </div>
 
                 <!-- Team 11: Food & Refreshments -->
-                <div class="team-group">
+                <div class="team-group" data-team="11">
                     <h3 class="team-title">Food & Refreshments</h3>
                     <div class="team-content">
                     <div class="faculty-member">
@@ -3083,7 +3244,7 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 </div>
 
                 <!-- Team 12: Transportation -->
-                <div class="team-group">
+                <div class="team-group" data-team="12">
                     <h3 class="team-title">Transportation</h3>
                     <div class="team-content">
                     <div class="faculty-member">
@@ -3105,7 +3266,7 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 </div>
 
                 <!-- Team 13: Photography & Videography -->
-                <div class="team-group">
+                <div class="team-group" data-team="13">
                     <h3 class="team-title">Photography & Videography</h3>
                     <div class="team-content">
                     <div class="faculty-member">
@@ -3127,7 +3288,7 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 </div>
 
                 <!-- Team 14: Competitions & Judging -->
-                <div class="team-group">
+                <div class="team-group" data-team="14">
                     <h3 class="team-title">Competitions & Judging</h3>
                     <div class="team-content">
                     <div class="faculty-member">
@@ -3145,6 +3306,15 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                             <p class="hierarchy-member-desc">Managing competitions</p>
                         </div>
                     </div>
+                    </div>
+                </div>
+                </div>
+                <!-- Right Details Panel -->
+                <div class="team-details-panel">
+                    <div class="details-empty-state">
+                        <div class="empty-icon">👥</div>
+                        <h3>Select a Team</h3>
+                        <p>Click on any team from the left sidebar to view their details</p>
                     </div>
                 </div>
             </div>
@@ -3861,21 +4031,36 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
             });
         });
 
-        // Team Hierarchy Accordion
-        document.querySelectorAll('.team-title').forEach(title => {
-            title.addEventListener('click', function() {
-                const teamGroup = this.closest('.team-group');
-                teamGroup.classList.toggle('collapsed');
+        // Team Hierarchy Sidebar Navigation
+        document.querySelectorAll('.team-group').forEach(group => {
+            group.addEventListener('click', function() {
+                // Remove active class from all groups
+                document.querySelectorAll('.team-group').forEach(g => g.classList.remove('active'));
+                
+                // Add active class to clicked group
+                this.classList.add('active');
+                
+                // Get team content
+                const teamContent = this.querySelector('.team-content');
+                const teamTitle = this.querySelector('.team-title').textContent;
+                const detailsPanel = document.querySelector('.team-details-panel');
+                
+                // Clone and show content in details panel
+                if (teamContent && detailsPanel) {
+                    detailsPanel.innerHTML = `
+                        <div class="details-header">
+                            <h2>${teamTitle}</h2>
+                        </div>
+                        ${teamContent.innerHTML}
+                    `;
+                }
             });
         });
 
-        // On mobile, collapse all team groups by default except the first one
-        if (window.innerWidth <= 768) {
-            document.querySelectorAll('.team-group').forEach((group, index) => {
-                if (index > 0) {
-                    group.classList.add('collapsed');
-                }
-            });
+        // Optional: Auto-select first team on load
+        const firstTeam = document.querySelector('.team-group[data-team="1"]');
+        if (firstTeam) {
+            firstTeam.click();
         }
 
         console.log('🎉 Ecstasy 2026 - Interactive features loaded!');
