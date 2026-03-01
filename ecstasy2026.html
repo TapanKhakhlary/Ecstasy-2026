@@ -1516,6 +1516,35 @@
 
         .merch-slide {
             min-width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .merch-slide-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .merch-slide-header h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            color: #FFD700;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .merch-slide-header p {
+            color: #b0b0b0;
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .merch-slide-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 40px;
@@ -1823,8 +1852,16 @@
             }
 
             /* Merchandise Slider Mobile */
-            .merch-slide {
+            .merch-slide-content {
                 grid-template-columns: 1fr;
+            }
+
+            .merch-slide-header h3 {
+                font-size: 1.5rem;
+            }
+
+            .merch-slide-header p {
+                font-size: 0.9rem;
             }
 
             .merch-nav.prev {
@@ -3801,72 +3838,84 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 <div class="merch-slider">
                     <!-- Slide 1: White T-Shirts -->
                     <div class="merch-slide">
-                        <div class="merch-item">
-                            <div class="merch-image">
-                                <img src="media/White back.jpeg" alt="White T-Shirt Back">
-                            </div>
-                            <div class="merch-info">
-                                <h3>White T-Shirt (Back)</h3>
-                                <p class="price">₹399</p>
-                                <p>Official Ecstasy 2026 T-Shirt - Back Design</p>
-                            </div>
+                        <div class="merch-slide-header">
+                            <h3>🤍 White T-Shirt Collection</h3>
+                            <p>Classic white designs • ₹399 each</p>
                         </div>
+                        <div class="merch-slide-content">
+                            <div class="merch-item">
+                                <div class="merch-image">
+                                    <img src="media/White back.jpeg" alt="White T-Shirt Back">
+                                </div>
+                                <div class="merch-info">
+                                    <h3>White T-Shirt (Back)</h3>
+                                    <p class="price">₹399</p>
+                                    <p>Official Ecstasy 2026 T-Shirt - Back Design</p>
+                                </div>
+                            </div>
 
-                        <div class="merch-item">
-                            <div class="merch-image">
-                                <img src="media/White front.jpeg" alt="White T-Shirt Front">
+                            <div class="merch-item">
+                                <div class="merch-image">
+                                    <img src="media/White front.jpeg" alt="White T-Shirt Front">
+                                </div>
+                                <div class="merch-info">
+                                    <h3>White T-Shirt (Front)</h3>
+                                    <p class="price">₹399</p>
+                                    <p>Official Ecstasy 2026 T-Shirt - Front Design</p>
+                                </div>
                             </div>
-                            <div class="merch-info">
-                                <h3>White T-Shirt (Front)</h3>
-                                <p class="price">₹399</p>
-                                <p>Official Ecstasy 2026 T-Shirt - Front Design</p>
-                            </div>
-                        </div>
 
-                        <div class="merch-item">
-                            <div class="merch-image">
-                                <img src="media/white.png" alt="White T-Shirt">
-                            </div>
-                            <div class="merch-info">
-                                <h3>White T-Shirt</h3>
-                                <p class="price">₹399</p>
-                                <p>Official Ecstasy 2026 T-Shirt</p>
+                            <div class="merch-item">
+                                <div class="merch-image">
+                                    <img src="media/white.png" alt="White T-Shirt">
+                                </div>
+                                <div class="merch-info">
+                                    <h3>White T-Shirt</h3>
+                                    <p class="price">₹399</p>
+                                    <p>Official Ecstasy 2026 T-Shirt</p>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Slide 2: Black T-Shirts -->
                     <div class="merch-slide">
-                        <div class="merch-item">
-                            <div class="merch-image">
-                                <img src="media/Black back.jpeg" alt="Black T-Shirt Back">
-                            </div>
-                            <div class="merch-info">
-                                <h3>Black T-Shirt (Back)</h3>
-                                <p class="price">₹399</p>
-                                <p>Official Ecstasy 2026 T-Shirt - Back Design</p>
-                            </div>
+                        <div class="merch-slide-header">
+                            <h3>🖤 Black T-Shirt Collection</h3>
+                            <p>Bold black designs • ₹399 each</p>
                         </div>
+                        <div class="merch-slide-content">
+                            <div class="merch-item">
+                                <div class="merch-image">
+                                    <img src="media/Black back.jpeg" alt="Black T-Shirt Back">
+                                </div>
+                                <div class="merch-info">
+                                    <h3>Black T-Shirt (Back)</h3>
+                                    <p class="price">₹399</p>
+                                    <p>Official Ecstasy 2026 T-Shirt - Back Design</p>
+                                </div>
+                            </div>
 
-                        <div class="merch-item">
-                            <div class="merch-image">
-                                <img src="media/Black front.jpeg" alt="Black T-Shirt Front">
+                            <div class="merch-item">
+                                <div class="merch-image">
+                                    <img src="media/Black front.jpeg" alt="Black T-Shirt Front">
+                                </div>
+                                <div class="merch-info">
+                                    <h3>Black T-Shirt (Front)</h3>
+                                    <p class="price">₹399</p>
+                                    <p>Official Ecstasy 2026 T-Shirt - Front Design</p>
+                                </div>
                             </div>
-                            <div class="merch-info">
-                                <h3>Black T-Shirt (Front)</h3>
-                                <p class="price">₹399</p>
-                                <p>Official Ecstasy 2026 T-Shirt - Front Design</p>
-                            </div>
-                        </div>
 
-                        <div class="merch-item">
-                            <div class="merch-image">
-                                <img src="media/black.png" alt="Black T-Shirt">
-                            </div>
-                            <div class="merch-info">
-                                <h3>Black T-Shirt</h3>
-                                <p class="price">₹399</p>
-                                <p>Official Ecstasy 2026 T-Shirt</p>
+                            <div class="merch-item">
+                                <div class="merch-image">
+                                    <img src="media/black.png" alt="Black T-Shirt">
+                                </div>
+                                <div class="merch-info">
+                                    <h3>Black T-Shirt</h3>
+                                    <p class="price">₹399</p>
+                                    <p>Official Ecstasy 2026 T-Shirt</p>
+                                </div>
                             </div>
                         </div>
                     </div>
