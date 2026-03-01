@@ -4190,10 +4190,16 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                     if (isMobile()) {
                         const backBtn = detailsPanel.querySelector('.mobile-back-button');
                         if (backBtn) {
-                            backBtn.addEventListener('click', function() {
+                            backBtn.addEventListener('click', function(e) {
+                                e.preventDefault();
+                                e.stopPropagation();
                                 sidebar.classList.remove('mobile-hidden');
                                 detailsPanel.classList.remove('mobile-visible');
-                                sidebar.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                // Scroll to members section
+                                const membersSection = document.querySelector('#members');
+                                if (membersSection) {
+                                    membersSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                }
                             });
                         }
                         
