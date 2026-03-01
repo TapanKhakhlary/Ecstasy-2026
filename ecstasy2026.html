@@ -4160,6 +4160,27 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
 
         // Team Hierarchy Sidebar Navigation
         const isMobile = () => window.innerWidth <= 768;
+        const detailsPanel = document.querySelector('.team-details-panel');
+        const sidebar = document.querySelector('.team-sidebar');
+        
+        // Event delegation for back button (handles dynamically added button)
+        if (detailsPanel) {
+            detailsPanel.addEventListener('click', function(e) {
+                if (e.target && e.target.classList.contains('mobile-back-button')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    sidebar.classList.remove('mobile-hidden');
+                    detailsPanel.classList.remove('mobile-visible');
+                    
+                    // Scroll to members section
+                    const membersSection = document.querySelector('#members');
+                    if (membersSection) {
+                        membersSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            });
+        }
         
         document.querySelectorAll('.team-group').forEach(group => {
             group.addEventListener('click', function() {
@@ -4172,8 +4193,6 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 // Get team content
                 const teamContent = this.querySelector('.team-content');
                 const teamTitle = this.querySelector('.team-title').textContent;
-                const detailsPanel = document.querySelector('.team-details-panel');
-                const sidebar = document.querySelector('.team-sidebar');
                 
                 // Clone and show content in details panel
                 if (teamContent && detailsPanel) {
@@ -4186,23 +4205,8 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                         ${teamContent.innerHTML}
                     `;
                     
-                    // Add event listener to back button
+                    // On mobile, hide sidebar and show details panel
                     if (isMobile()) {
-                        const backBtn = detailsPanel.querySelector('.mobile-back-button');
-                        if (backBtn) {
-                            backBtn.addEventListener('click', function(e) {
-                                e.preventDefault();
-                                e.stopPropagation();
-                                sidebar.classList.remove('mobile-hidden');
-                                detailsPanel.classList.remove('mobile-visible');
-                                // Scroll to members section
-                                const membersSection = document.querySelector('#members');
-                                if (membersSection) {
-                                    membersSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                                }
-                            });
-                        }
-                        
                         sidebar.classList.add('mobile-hidden');
                         detailsPanel.classList.add('mobile-visible');
                         // Scroll to top of details panel
