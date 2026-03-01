@@ -741,6 +741,41 @@
 
         .mobile-back-button {
             display: none;
+            position: relative;
+            z-index: 10;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-back-button {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 180, 0, 0.15));
+                border: 2px solid rgba(255, 215, 0, 0.4);
+                color: #FFD700;
+                padding: 12px 20px;
+                border-radius: 12px;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 600;
+                font-size: 0.9rem;
+                cursor: pointer;
+                margin-bottom: 20px;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                position: relative;
+                z-index: 10;
+                border-style: solid;
+            }
+
+            .mobile-back-button:active {
+                transform: scale(0.95);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            }
+
+            .mobile-back-button::before {
+                content: '←';
+                font-size: 1.2rem;
+            }
         }
 
         .team-group {
@@ -1636,34 +1671,6 @@
             .team-details-panel .hierarchy-connector {
                 height: 40px;
                 margin: 20px auto;
-            }
-
-            .mobile-back-button {
-                display: flex;
-                align-items: center;
-                gap: 8px;
-                background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 180, 0, 0.15));
-                border: 2px solid rgba(255, 215, 0, 0.4);
-                color: #FFD700;
-                padding: 12px 20px;
-                border-radius: 12px;
-                font-family: 'Montserrat', sans-serif;
-                font-weight: 600;
-                font-size: 0.9rem;
-                cursor: pointer;
-                margin-bottom: 20px;
-                transition: all 0.3s ease;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            }
-
-            .mobile-back-button:active {
-                transform: scale(0.95);
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-            }
-
-            .mobile-back-button::before {
-                content: '←';
-                font-size: 1.2rem;
             }
 
             .details-header {
@@ -4166,17 +4173,22 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
         // Event delegation for back button (handles dynamically added button)
         if (detailsPanel) {
             detailsPanel.addEventListener('click', function(e) {
-                if (e.target && e.target.classList.contains('mobile-back-button')) {
+                console.log('Details panel clicked, target:', e.target, 'classList:', e.target.classList);
+                if (e.target && (e.target.classList.contains('mobile-back-button') || e.target.closest('.mobile-back-button'))) {
+                    console.log('Back button clicked!');
                     e.preventDefault();
                     e.stopPropagation();
                     
-                    sidebar.classList.remove('mobile-hidden');
-                    detailsPanel.classList.remove('mobile-visible');
-                    
-                    // Scroll to members section
-                    const membersSection = document.querySelector('#members');
-                    if (membersSection) {
-                        membersSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    if (sidebar) {
+                        sidebar.classList.remove('mobile-hidden');
+                        detailsPanel.classList.remove('mobile-visible');
+                        
+                        // Scroll to members section
+                        const membersSection = document.querySelector('#members');
+                        if (membersSection) {
+                            membersSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                        console.log('Sidebar shown, details panel hidden');
                     }
                 }
             });
