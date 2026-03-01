@@ -739,6 +739,10 @@
             text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
         }
 
+        .mobile-back-button {
+            display: none;
+        }
+
         .team-group {
             background: linear-gradient(145deg, rgba(30, 30, 30, 0.95), rgba(20, 20, 20, 0.98));
             border-radius: 16px;
@@ -1580,19 +1584,59 @@
             /* Team Hierarchy Mobile */
             .team-hierarchy {
                 flex-direction: column;
-                gap: 20px;
+                gap: 0;
+                position: relative;
             }
 
             .team-sidebar {
                 flex: 1;
                 width: 100%;
                 max-height: none;
-                position: static;
+                position: relative;
+                display: block;
+            }
+
+            .team-sidebar.mobile-hidden {
+                display: none;
             }
 
             .team-details-panel {
                 min-height: 400px;
                 padding: 30px 20px;
+                display: none;
+                position: relative;
+            }
+
+            .team-details-panel.mobile-visible {
+                display: block;
+            }
+
+            .mobile-back-button {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 180, 0, 0.15));
+                border: 2px solid rgba(255, 215, 0, 0.4);
+                color: #FFD700;
+                padding: 12px 20px;
+                border-radius: 12px;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 600;
+                font-size: 0.9rem;
+                cursor: pointer;
+                margin-bottom: 20px;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            }
+
+            .mobile-back-button:active {
+                transform: scale(0.95);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            }
+
+            .mobile-back-button::before {
+                content: '←';
+                font-size: 1.2rem;
             }
 
             .details-header h2 {
@@ -4032,6 +4076,8 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
         });
 
         // Team Hierarchy Sidebar Navigation
+        const isMobile = () => window.innerWidth <= 768;
+        
         document.querySelectorAll('.team-group').forEach(group => {
             group.addEventListener('click', function() {
                 // Remove active class from all groups
@@ -4044,23 +4090,49 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 const teamContent = this.querySelector('.team-content');
                 const teamTitle = this.querySelector('.team-title').textContent;
                 const detailsPanel = document.querySelector('.team-details-panel');
+                const sidebar = document.querySelector('.team-sidebar');
                 
                 // Clone and show content in details panel
                 if (teamContent && detailsPanel) {
+                    const backButton = `<button class="mobile-back-button" onclick="showTeamSidebar()">Back to Teams</button>`;
                     detailsPanel.innerHTML = `
+                        ${isMobile() ? backButton : ''}
                         <div class="details-header">
                             <h2>${teamTitle}</h2>
                         </div>
                         ${teamContent.innerHTML}
                     `;
+                    
+                    // On mobile, hide sidebar and show details panel
+                    if (isMobile()) {
+                        sidebar.classList.add('mobile-hidden');
+                        detailsPanel.classList.add('mobile-visible');
+                        // Scroll to top of details panel
+                        detailsPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
                 }
             });
         });
 
-        // Optional: Auto-select first team on load
-        const firstTeam = document.querySelector('.team-group[data-team="1"]');
-        if (firstTeam) {
-            firstTeam.click();
+        // Function to show team sidebar (for mobile back button)
+        window.showTeamSidebar = function() {
+            const sidebar = document.querySelector('.team-sidebar');
+            const detailsPanel = document.querySelector('.team-details-panel');
+            
+            if (sidebar && detailsPanel) {
+                sidebar.classList.remove('mobile-hidden');
+                detailsPanel.classList.remove('mobile-visible');
+                // Scroll to top of sidebar
+                sidebar.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        };
+
+        // Auto-select first team on load for desktop only
+        if (!isMobile()) {
+            const firstTeam = document.querySelector('.team-group[data-team="1"]');
+            if (firstTeam) {
+                firstTeam.click();
+            }
         }
 
         console.log('🎉 Ecstasy 2026 - Interactive features loaded!');
