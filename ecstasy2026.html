@@ -1602,13 +1602,40 @@
 
             .team-details-panel {
                 min-height: 400px;
-                padding: 30px 20px;
+                padding: 20px 16px;
                 display: none;
                 position: relative;
             }
 
             .team-details-panel.mobile-visible {
                 display: block;
+            }
+
+            .team-details-panel .faculty-member {
+                padding: 20px 16px;
+                margin-bottom: 16px;
+            }
+
+            .team-details-panel .student-member {
+                padding: 16px 14px;
+                margin-bottom: 12px;
+            }
+
+            .team-details-panel .hierarchy-member-photo {
+                width: 90px;
+                height: 90px;
+                font-size: 2.2rem;
+            }
+
+            .team-details-panel .faculty-member .hierarchy-member-photo {
+                width: 110px;
+                height: 110px;
+                font-size: 2.8rem;
+            }
+
+            .team-details-panel .hierarchy-connector {
+                height: 40px;
+                margin: 20px auto;
             }
 
             .mobile-back-button {
@@ -1639,8 +1666,14 @@
                 font-size: 1.2rem;
             }
 
+            .details-header {
+                padding-bottom: 20px;
+                margin-bottom: 20px;
+            }
+
             .details-header h2 {
-                font-size: 1.4rem;
+                font-size: 1.3rem;
+                letter-spacing: 1.5px;
             }
 
             .team-group {
@@ -2066,19 +2099,69 @@
 
             /* Team Hierarchy Extra Small */
             .team-hierarchy {
-                gap: 20px;
+                gap: 0;
                 margin-top: 30px;
             }
 
+            .team-sidebar {
+                padding: 0;
+            }
+
+            .team-details-panel {
+                padding: 16px 12px;
+            }
+
+            .team-details-panel .faculty-member {
+                padding: 18px 14px;
+            }
+
+            .team-details-panel .student-member {
+                padding: 14px 12px;
+                margin-bottom: 10px;
+            }
+
+            .team-details-panel .hierarchy-member-photo {
+                width: 75px;
+                height: 75px;
+                font-size: 1.8rem;
+            }
+
+            .team-details-panel .faculty-member .hierarchy-member-photo {
+                width: 90px;
+                height: 90px;
+                font-size: 2.2rem;
+            }
+
+            .team-details-panel .hierarchy-connector {
+                height: 30px;
+                margin: 15px auto;
+            }
+
+            .details-header {
+                padding-bottom: 16px;
+                margin-bottom: 16px;
+            }
+
+            .details-header h2 {
+                font-size: 1.2rem;
+                letter-spacing: 1.2px;
+            }
+
+            .mobile-back-button {
+                padding: 10px 16px;
+                font-size: 0.85rem;
+                margin-bottom: 16px;
+            }
+
             .team-group {
-                padding: 20px 16px;
+                padding: 14px 12px;
             }
 
             .team-title {
-                font-size: 0.85rem;
-                margin-bottom: 18px;
-                padding: 9px 14px;
-                letter-spacing: 1.2px;
+                font-size: 0.8rem;
+                margin-bottom: 0;
+                padding: 0;
+                letter-spacing: 1px;
             }
 
             .team-group.collapsed .team-title {
