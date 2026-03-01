@@ -4177,7 +4177,7 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 
                 // Clone and show content in details panel
                 if (teamContent && detailsPanel) {
-                    const backButton = `<button class="mobile-back-button" onclick="showTeamSidebar()">Back to Teams</button>`;
+                    const backButton = `<button class="mobile-back-button">Back to Teams</button>`;
                     detailsPanel.innerHTML = `
                         ${isMobile() ? backButton : ''}
                         <div class="details-header">
@@ -4186,8 +4186,17 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                         ${teamContent.innerHTML}
                     `;
                     
-                    // On mobile, hide sidebar and show details panel
+                    // Add event listener to back button
                     if (isMobile()) {
+                        const backBtn = detailsPanel.querySelector('.mobile-back-button');
+                        if (backBtn) {
+                            backBtn.addEventListener('click', function() {
+                                sidebar.classList.remove('mobile-hidden');
+                                detailsPanel.classList.remove('mobile-visible');
+                                sidebar.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            });
+                        }
+                        
                         sidebar.classList.add('mobile-hidden');
                         detailsPanel.classList.add('mobile-visible');
                         // Scroll to top of details panel
@@ -4196,19 +4205,6 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 }
             });
         });
-
-        // Function to show team sidebar (for mobile back button)
-        window.showTeamSidebar = function() {
-            const sidebar = document.querySelector('.team-sidebar');
-            const detailsPanel = document.querySelector('.team-details-panel');
-            
-            if (sidebar && detailsPanel) {
-                sidebar.classList.remove('mobile-hidden');
-                detailsPanel.classList.remove('mobile-visible');
-                // Scroll to top of sidebar
-                sidebar.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        };
 
         // Auto-select first team on load for desktop only
         if (!isMobile()) {
