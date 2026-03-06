@@ -12,6 +12,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -930,6 +931,8 @@
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(10px);
             cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+            outline: none;
         }
 
         .team-group::before {
@@ -996,6 +999,15 @@
             border: none;
             position: relative;
             overflow: visible;
+            -webkit-tap-highlight-color: transparent;
+            outline: none;
+        }
+        
+        .team-title:focus,
+        .team-title:active {
+            outline: none;
+            background: transparent;
+            box-shadow: none;
         }
 
         .team-title::before {
