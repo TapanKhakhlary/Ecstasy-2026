@@ -506,21 +506,22 @@
 
         .events-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 35px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
             margin-top: 60px;
         }
 
         .event-card {
-            background: linear-gradient(145deg, rgba(30, 30, 30, 0.95), rgba(20, 20, 20, 0.98));
-            border-radius: 20px;
-            padding: 35px 28px;
-            border: 2px solid rgba(255, 215, 0, 0.25);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+            background: transparent;
+            border-radius: 16px;
+            padding: 0;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
             text-align: center;
+            backdrop-filter: blur(10px);
         }
 
         .event-card::before {
@@ -530,9 +531,9 @@
             left: 0;
             right: 0;
             bottom: 0;
-            border-radius: 20px;
-            padding: 2px;
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(255, 107, 53, 0.15));
+            border-radius: 16px;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.4), rgba(255, 107, 53, 0.2));
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask-composite: exclude;
@@ -541,9 +542,9 @@
         }
 
         .event-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(255, 215, 0, 0.6);
-            box-shadow: 0 15px 45px rgba(255, 215, 0, 0.25);
+            transform: translateY(-8px);
+            border-color: rgba(255, 215, 0, 0.3);
+            box-shadow: 0 12px 40px rgba(255, 215, 0, 0.2), 0 0 1px rgba(255, 255, 255, 0.2);
         }
 
         .event-card:hover::before {
@@ -571,31 +572,68 @@
             background: linear-gradient(135deg, rgba(255, 215, 0, 0.25), rgba(255, 107, 53, 0.15));
         }
 
+        .event-image {
+            width: 100%;
+            height: 400px;
+            margin-bottom: 0;
+            border-radius: 16px 16px 0 0;
+            overflow: hidden;
+            background: linear-gradient(180deg, rgba(20, 20, 20, 0.4), rgba(10, 10, 10, 0.6));
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .event-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: linear-gradient(to bottom, transparent, rgba(15, 15, 15, 0.9));
+            pointer-events: none;
+        }
+
+        .event-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 15px;
+            transition: all 0.4s ease;
+        }
+
+        .event-card:hover .event-image img {
+            transform: scale(1.05);
+        }
+
         .event-card h3 {
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.35rem;
             color: #FFD700;
-            margin-bottom: 15px;
+            margin: 20px 25px 12px;
             font-weight: 700;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             text-transform: uppercase;
+            line-height: 1.3;
         }
 
         .event-card p {
-            color: #b0b0b0;
-            line-height: 1.7;
-            font-size: 0.95rem;
-            margin-bottom: 20px;
+            color: #a0a0a0;
+            line-height: 1.6;
+            font-size: 0.9rem;
+            margin: 0 25px 20px;
+            font-weight: 400;
         }
 
         .event-badge {
             display: inline-block;
-            padding: 8px 18px;
-            background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 140, 97, 0.15));
-            border: 1px solid rgba(255, 107, 53, 0.4);
-            border-radius: 20px;
-            color: #FF6B35;
-            font-size: 0.75rem;
+            padding: 8px 20px;
+            margin: 0 25px 25px;
+            background: rgba(255, 107, 53, 0.12);
+            border: 1px solid rgba(255, 107, 53, 0.25);
+            border-radius: 6px;
+            color: #FF8C6B;
+            font-size: 0.7rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -1068,8 +1106,23 @@
                         inset 0 1px 3px rgba(255, 215, 0, 0.15);
         }
 
+        .team-content > .faculty-member {
+            display: inline-block;
+            width: calc(50% - 15px);
+            margin: 0 7.5px 15px;
+            vertical-align: top;
+        }
+
+        .team-content > .faculty-member:only-of-type {
+            width: 100%;
+            margin: 0 0 15px;
+        }
+
         .student-members {
             margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
         }
 
         .student-member {
@@ -1078,7 +1131,6 @@
                 rgba(255, 107, 53, 0.06));
             border-radius: 14px;
             padding: 18px 16px;
-            margin-bottom: 14px;
             text-align: center;
             border: 1.5px solid rgba(255, 107, 53, 0.25);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1104,7 +1156,7 @@
                 rgba(255, 107, 53, 0.12),
                 rgba(255, 140, 97, 0.08));
             border-color: rgba(255, 107, 53, 0.5);
-            transform: translateX(8px);
+            transform: translateY(-5px);
             box-shadow: 0 4px 20px rgba(255, 107, 53, 0.25);
         }
 
@@ -1112,9 +1164,7 @@
             opacity: 1;
         }
 
-        .student-member:last-child {
-            margin-bottom: 0;
-        }
+
 
         .member-role-badge {
             display: inline-block;
@@ -1165,14 +1215,14 @@
         }
 
         .hierarchy-member-photo {
-            width: 90px;
-            height: 90px;
+            width: 120px;
+            height: 120px;
             margin: 0 auto 16px;
             background: linear-gradient(135deg, #FF6B35 0%, #9B59B6 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.2rem;
+            font-size: 2.8rem;
             color: white;
             border-radius: 50%;
             box-shadow: 0 6px 24px rgba(255, 107, 53, 0.35),
@@ -1180,6 +1230,14 @@
             border: 3px solid rgba(255, 255, 255, 0.15);
             transition: all 0.3s ease;
             position: relative;
+            overflow: hidden;
+        }
+
+        .hierarchy-member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
         }
 
         .hierarchy-member-photo::after {
@@ -1200,10 +1258,10 @@
         }
 
         .faculty-member .hierarchy-member-photo {
-            width: 110px;
-            height: 110px;
+            width: 150px;
+            height: 150px;
             background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-            font-size: 2.8rem;
+            font-size: 3.4rem;
             box-shadow: 0 8px 28px rgba(255, 215, 0, 0.4),
                         inset 0 2px 6px rgba(0, 0, 0, 0.15);
             border: 3px solid rgba(255, 255, 255, 0.2);
@@ -1266,7 +1324,7 @@
         .artist-photo img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             transition: all 0.3s ease;
         }
 
@@ -1834,6 +1892,10 @@
                 margin-bottom: 20px;
             }
 
+            .event-image {
+                height: 350px;
+            }
+
             .event-card h3 {
                 font-size: 1.3rem;
             }
@@ -1941,15 +2003,15 @@
             }
 
             .team-details-panel .hierarchy-member-photo {
-                width: 90px;
-                height: 90px;
-                font-size: 2.2rem;
+                width: 120px;
+                height: 120px;
+                font-size: 2.8rem;
             }
 
             .team-details-panel .faculty-member .hierarchy-member-photo {
-                width: 110px;
-                height: 110px;
-                font-size: 2.8rem;
+                width: 150px;
+                height: 150px;
+                font-size: 3.4rem;
             }
 
             .team-details-panel .hierarchy-connector {
@@ -1985,16 +2047,16 @@
             }
 
             .hierarchy-member-photo {
-                width: 85px;
-                height: 85px;
-                font-size: 2rem;
+                width: 115px;
+                height: 115px;
+                font-size: 2.6rem;
                 margin-bottom: 14px;
             }
 
             .faculty-member .hierarchy-member-photo {
-                width: 100px;
-                height: 100px;
-                font-size: 2.5rem;
+                width: 135px;
+                height: 135px;
+                font-size: 3rem;
             }
 
             .hierarchy-member-name {
@@ -2022,7 +2084,16 @@
 
             .student-member {
                 padding: 14px;
-                margin-bottom: 12px;
+            }
+
+            .student-members {
+                grid-template-columns: 1fr;
+            }
+
+            .team-content > .faculty-member {
+                width: 100%;
+                margin: 0 0 15px;
+                display: block;
             }
 
             .faculty-member {
@@ -2402,6 +2473,10 @@
                 margin-bottom: 18px;
             }
 
+            .event-image {
+                height: 300px;
+            }
+
             .event-card h3 {
                 font-size: 1.2rem;
                 letter-spacing: 0.8px;
@@ -2440,15 +2515,15 @@
             }
 
             .team-details-panel .hierarchy-member-photo {
-                width: 75px;
-                height: 75px;
-                font-size: 1.8rem;
+                width: 100px;
+                height: 100px;
+                font-size: 2.2rem;
             }
 
             .team-details-panel .faculty-member .hierarchy-member-photo {
-                width: 90px;
-                height: 90px;
-                font-size: 2.2rem;
+                width: 120px;
+                height: 120px;
+                font-size: 2.8rem;
             }
 
             .team-details-panel .hierarchy-connector {
@@ -2492,17 +2567,17 @@
             }
 
             .hierarchy-member-photo {
-                width: 75px;
-                height: 75px;
-                font-size: 1.8rem;
+                width: 100px;
+                height: 100px;
+                font-size: 2.2rem;
                 margin-bottom: 12px;
                 border: 2px solid rgba(255, 255, 255, 0.15);
             }
 
             .faculty-member .hierarchy-member-photo {
-                width: 90px;
-                height: 90px;
-                font-size: 2.2rem;
+                width: 120px;
+                height: 120px;
+                font-size: 2.8rem;
                 border: 2px solid rgba(255, 255, 255, 0.2);
             }
 
@@ -2538,7 +2613,16 @@
 
             .student-member {
                 padding: 12px;
-                margin-bottom: 10px;
+            }
+
+            .student-members {
+                grid-template-columns: 1fr;
+            }
+
+            .team-content > .faculty-member {
+                width: 100%;
+                margin: 0 0 15px;
+                display: block;
             }
 
             .faculty-member {
@@ -3337,52 +3421,84 @@
             <p style="text-align: center; color: #888888; margin-bottom: 40px;">Explore the exciting events and competitions at Ecstasy 2026</p>
             
             <div class="events-grid">
-                <!-- Cultural Events -->
+                <!-- Essay Writing Competition -->
                 <div class="event-card">
-                    <div class="event-icon">🎭</div>
-                    <h3>Cultural Events</h3>
-                    <p>Dance, Music, Drama, Fashion Show, and more cultural performances showcasing talent and creativity</p>
-                    <span class="event-badge">Multiple Competitions</span>
+                    <div class="event-image">
+                        <img src="media/Ecstasy 26 Essay Writing Competition.png" alt="Essay Writing Competition">
+                    </div>
+                    <h3>Essay Writing</h3>
+                    <p>Express your thoughts and ideas through compelling essays on diverse topics</p>
+                    <span class="event-badge">Literary Event</span>
                 </div>
 
-                <!-- Literary Events -->
+                <!-- Extempore -->
                 <div class="event-card">
-                    <div class="event-icon">📚</div>
-                    <h3>Literary Events</h3>
-                    <p>Debate, Poetry, Essay Writing, Speech, Quiz competitions to showcase intellectual prowess</p>
-                    <span class="event-badge">Knowledge & Wisdom</span>
+                    <div class="event-image">
+                        <img src="media/Ecstasy 26 Extempore.png" alt="Extempore">
+                    </div>
+                    <h3>Extempore</h3>
+                    <p>Test your spontaneous speaking skills and quick thinking abilities</p>
+                    <span class="event-badge">Public Speaking</span>
                 </div>
 
-                <!-- Art & Craft -->
+                <!-- Letter Writing -->
                 <div class="event-card">
-                    <div class="event-icon">🎨</div>
-                    <h3>Art & Craft</h3>
-                    <p>Painting, Sketching, Rangoli, Poster Making, and creative art competitions</p>
-                    <span class="event-badge">Creative Expression</span>
+                    <div class="event-image">
+                        <img src="media/Ecstasy 26 Letter Writing.png" alt="Letter Writing">
+                    </div>
+                    <h3>Letter Writing</h3>
+                    <p>Showcase your formal and creative writing skills through letters</p>
+                    <span class="event-badge">Written Expression</span>
                 </div>
 
-                <!-- Sports Events -->
+                <!-- Marathon -->
                 <div class="event-card">
-                    <div class="event-icon">⚽</div>
-                    <h3>Sports Events</h3>
-                    <p>Football, Cricket, Basketball, Volleyball, and various athletic competitions</p>
-                    <span class="event-badge">Physical Excellence</span>
+                    <div class="event-image">
+                        <img src="media/Ecstasy 26 Marathon.png" alt="Marathon">
+                    </div>
+                    <h3>Marathon</h3>
+                    <p>Challenge your endurance and stamina in this exciting running event</p>
+                    <span class="event-badge">Sports Event</span>
                 </div>
 
-                <!-- Technical Events -->
+                <!-- Poem Recitation -->
                 <div class="event-card">
-                    <div class="event-icon">💻</div>
-                    <h3>Technical Events</h3>
-                    <p>Coding, Hackathons, Tech Quiz, Robotics, and innovation challenges</p>
-                    <span class="event-badge">Tech Innovation</span>
+                    <div class="event-image">
+                        <img src="media/Ecstasy 26 Poem Recitation.png" alt="Poem Recitation">
+                    </div>
+                    <h3>Poem Recitation</h3>
+                    <p>Bring poetry to life through expressive and emotive recitations</p>
+                    <span class="event-badge">Performance Art</span>
                 </div>
 
-                <!-- Gaming Events -->
+                <!-- Poem Writing -->
                 <div class="event-card">
-                    <div class="event-icon">🎮</div>
-                    <h3>Gaming Events</h3>
-                    <p>E-sports tournaments, Gaming competitions, and recreational gaming activities</p>
-                    <span class="event-badge">Digital Arena</span>
+                    <div class="event-image">
+                        <img src="media/Ecstasy 26 Poem Writing.png" alt="Poem Writing">
+                    </div>
+                    <h3>Poem Writing</h3>
+                    <p>Create beautiful verses and showcase your poetic creativity</p>
+                    <span class="event-badge">Creative Writing</span>
+                </div>
+
+                <!-- Shayari Competition -->
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="media/Ecstasy 26 Shayari Competition.png" alt="Shayari Competition">
+                    </div>
+                    <h3>Shayari Competition</h3>
+                    <p>Express emotions and stories through the art of Urdu poetry</p>
+                    <span class="event-badge">Poetic Expression</span>
+                </div>
+
+                <!-- Speech Writing -->
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="media/Ecstasy 26 Speech Writing.png" alt="Speech Writing">
+                    </div>
+                    <h3>Speech Writing</h3>
+                    <p>Craft powerful speeches that inspire and influence audiences</p>
+                    <span class="event-badge">Oratory Skills</span>
                 </div>
             </div>
         </div>
@@ -3412,8 +3528,8 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 <div class="artist-card">
                     <div class="artist-photo"><img src="media/Artist 1.png" alt="Artist 1"></div>
                     <div class="artist-info">
-                        <h3>Alu Terang</h3>
-                        <p class="role">Singer | Songwriter</p>
+                        <h3>OLLY ESSE</h3>
+                        <p class="role">DJ</p>
                         <div class="artist-links">
                             <a href="#" title="Instagram">📷</a>
                         </div>
@@ -3423,8 +3539,8 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 <div class="artist-card">
                     <div class="artist-photo"><img src="media/Artist 2.png" alt="Artist 2"></div>
                     <div class="artist-info">
-                        <h3>Swrjisuma</h3>
-                        <p class="role">Musician | Recording Artist</p>
+                        <h3>SWRJISUMA</h3>
+                        <p class="role">SINGER</p>
                         <div class="artist-links">
                             <a href="#" title="Instagram">📷</a>
                         </div>
@@ -3434,7 +3550,7 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 <div class="artist-card">
                     <div class="artist-photo"><img src="media/Artist 3.png" alt="Artist 3"></div>
                     <div class="artist-info">
-                        <h3>Novo</h3>
+                        <h3>NOVO</h3>
                         <p class="role">Rock Band | Live Performers</p>
                         <div class="artist-links">
                             <a href="#" title="Instagram">📷</a>
@@ -3445,7 +3561,7 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 <div class="artist-card">
                     <div class="artist-photo"><img src="media/Artist 4.png" alt="Artist 4"></div>
                     <div class="artist-info">
-                        <h3>Shila The Band</h3>
+                        <h3>SHILA THE BAND</h3>
                         <p class="role">Contemporary Band | Multi-Genre</p>
                         <div class="artist-links">
                             <a href="#" title="Instagram">📷</a>
@@ -3456,7 +3572,7 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 <div class="artist-card">
                     <div class="artist-photo"><img src="media/Artist 5.png" alt="Artist 5"></div>
                     <div class="artist-info">
-                        <h3>Nilav Nita</h3>
+                        <h3>NILAV NITA</h3>
                         <p class="role">Vocalist | Classical Performer</p>
                         <div class="artist-links">
                             <a href="#" title="Instagram">📷</a>
@@ -3467,11 +3583,8 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 <div class="artist-card">
                     <div class="artist-photo"><img src="media/Artist 6.png" alt="Artist 6"></div>
                     <div class="artist-info">
-                        <h3>Nita, Olly Edge & More</h3>
+                        <h3>NITA, OLLY ESSE & More</h3>
                         <p class="role">Ensemble Group | Collaborative Artists</p>
-                        <div class="artist-links">
-                            <a href="#" title="Instagram">📷</a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -3489,43 +3602,61 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 <div class="team-sidebar">
                 <!-- Team 1: Overall Coordination -->
                 <div class="team-group" data-team="1">
-                    <h3 class="team-title">Overall Coordination</h3>
+                    <h3 class="team-title">CHAIRMAN & CO-CHAIRMAN</h3>
                     <div class="team-content">
                     <div class="faculty-member">
-                        <div class="hierarchy-member-photo">?</div>
-                        <h4 class="hierarchy-member-name">Faculty Name 1</h4>
-                        <span class="member-role-badge">Chief Patron</span>
+                        <div class="hierarchy-member-photo"><img src="media/Debarshi.jpg" alt="Mr. Debarshi kr. Brahma"></div>
+                        <h4 class="hierarchy-member-name">Mr. Debarshi kr. Brahma, Asstt. Professor Dept. of MCD, Asstt. Dean Students Affairs.</h4>
+                        <span class="member-role-badge">CHAIRMAN</span>
                         <p class="hierarchy-member-desc">Overall event supervision</p>
                     </div>
-                    <div class="hierarchy-connector"></div>
-                    <div class="student-members">
-                        <div class="student-member">
-                            <div class="hierarchy-member-photo">?</div>
-                            <h4 class="hierarchy-member-name">Student Name</h4>
-                            <span class="student-role-badge">President</span>
-                            <p class="hierarchy-member-desc">Leading student coordination</p>
-                        </div>
+                    <div class="faculty-member">
+                        <div class="hierarchy-member-photo"><img src="media/Shafi.jpg" alt="Dr. Shafi Kamal Rahman"></div>
+                        <h4 class="hierarchy-member-name">Dr. Shafi Kamal Rahman, Asstt. Proffewssor, Dept. of CE & Facultyb Coordinator, Cultural.</h4>
+                        <span class="member-role-badge">CO-CHAIRMAN</span>
                     </div>
                     </div>
                 </div>
 
                 <!-- Team 2: Event Management -->
                 <div class="team-group" data-team="2">
-                    <h3 class="team-title">Event Management</h3>
+                    <h3 class="team-title">CONVENOR</h3>
                     <div class="team-content">
                     <div class="faculty-member">
-                        <div class="hierarchy-member-photo">?</div>
-                        <h4 class="hierarchy-member-name">Faculty Name 2</h4>
-                        <span class="member-role-badge">Faculty Coordinator</span>
-                        <p class="hierarchy-member-desc">Managing event operations</p>
+                        <div class="hierarchy-member-photo"><img src="media/Borat.jpg" alt="Mr. Borat Basumatari"></div>
+                        <h4 class="hierarchy-member-name">Mr. Borat Basumatari, Asstt. Professor, Dept. of IE.</h4>
+                        <span class="member-role-badge">FACULTY CONVENOR</span>
+                    </div>
+                    <div class="faculty-member">
+                        <div class="hierarchy-member-photo"><img src="media/Manasi-Buzar-Baruah.webp" alt="Dr. Manasi Buzar Baruah"></div>
+                        <h4 class="hierarchy-member-name">Dr. Manasi Buzar Baruah, Asstt. Professor, Dept. of Physics.</h4>
+                        <span class="member-role-badge">FACULTY CONVENOR</span>
                     </div>
                     <div class="hierarchy-connector"></div>
                     <div class="student-members">
                         <div class="student-member">
-                            <div class="hierarchy-member-photo">?</div>
-                            <h4 class="hierarchy-member-name">Student Name</h4>
-                            <span class="student-role-badge">Vice President</span>
+                            <div class="hierarchy-member-photo"><img src="media/Meridhar Rabha u22ecel2065@cit.ac.in thefuckinmeri.jpeg" alt="Mr. Meridhar Rabha"></div>
+                            <h4 class="hierarchy-member-name">Mr. Meridhar Rabha</h4>
+                            <span class="student-role-badge">CHIEF CONVENOR</span>
                             <p class="hierarchy-member-desc">Event coordination</p>
+                        </div>
+                        <div class="student-member">
+                            <div class="hierarchy-member-photo"><img src="media/Irina Basumatary_instaid@basumataryirina_u22mcdl2047@cit.ac.in.jpg" alt="Ms. Irina Basumatary"></div>
+                            <h4 class="hierarchy-member-name">Ms. Irina Basumatary</h4>
+                            <span class="student-role-badge">CHIEF CONVENOR</span>
+                            <p class="hierarchy-member-desc">Event coordination</p>
+                        </div>
+                        <div class="student-member">
+                            <div class="hierarchy-member-photo"><img src="media/Prithibiraj.JPG" alt="Mr. Prithibiraj Brahma"></div>
+                            <h4 class="hierarchy-member-name">Mr. Prithibiraj Brahma</h4>
+                            <span class="student-role-badge">ASSTT. CHIEF CONVENOR</span>
+                            <p class="hierarchy-member-desc">Assistant coordination</p>
+                        </div>
+                        <div class="student-member">
+                            <div class="hierarchy-member-photo"><img src="media/Deepali Borgayary, mail id-u22csel2095@cit.ac.in, insta id-deepali_borgayary (1).JPG" alt="Ms. Deepali Borgayary"></div>
+                            <h4 class="hierarchy-member-name">Ms. Deepali Borgayary</h4>
+                            <span class="student-role-badge">ASSTT. CHIEF CONVENOR</span>
+                            <p class="hierarchy-member-desc">Assistant coordination</p>
                         </div>
                     </div>
                     </div>
@@ -3533,21 +3664,39 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
 
                 <!-- Team 3: Cultural Activities -->
                 <div class="team-group" data-team="3">
-                    <h3 class="team-title">Cultural Activities</h3>
+                    <h3 class="team-title">SECURITY MANAGEMENT</h3>
                     <div class="team-content">
                     <div class="faculty-member">
-                        <div class="hierarchy-member-photo">?</div>
-                        <h4 class="hierarchy-member-name">Faculty Name 3</h4>
-                        <span class="member-role-badge">Cultural Advisor</span>
-                        <p class="hierarchy-member-desc">Overseeing cultural programs</p>
+                        <div class="hierarchy-member-photo"><img src="media/Shayaram.jpg" alt="Dr. Shayaram Basumatary"></div>
+                        <h4 class="hierarchy-member-name">Dr. Shayaram Basumatary, Asstt. Professor, Dept. of ME</h4>
+                        <span class="member-role-badge">FACULTY-IN-CHARGE</span>
+                    </div>
+                    <div class="faculty-member">
+                        <div class="hierarchy-member-photo"><img src="media/Pranjal.jpg" alt="Dr. Pranjal Barman"></div>
+                        <h4 class="hierarchy-member-name">Dr. Pranjal Barman, Asstt. Professor, Dept. of CE</h4>
+                        <span class="member-role-badge">MEMBER</span>
                     </div>
                     <div class="hierarchy-connector"></div>
                     <div class="student-members">
                         <div class="student-member">
-                            <div class="hierarchy-member-photo">?</div>
-                            <h4 class="hierarchy-member-name">Student Name</h4>
-                            <span class="student-role-badge">Cultural Secretary</span>
-                            <p class="hierarchy-member-desc">Managing cultural events</p>
+                            <div class="hierarchy-member-photo"><img src="media/Rituraj Brahma.JPG" alt="Mr. Rituraj Brahma"></div>
+                            <h4 class="hierarchy-member-name">Mr. Rituraj Brahma</h4>
+                            <span class="student-role-badge">CONVENOR</span>
+                        </div>
+                        <div class="student-member">
+                            <div class="hierarchy-member-photo"><img src="media/Juri Roy.jpg" alt="Ms. Juri Roy"></div>
+                            <h4 class="hierarchy-member-name">Ms. Juri Roy</h4>
+                            <span class="student-role-badge">CONVENOR</span>
+                        </div>
+                        <div class="student-member">
+                            <div class="hierarchy-member-photo"><img src="media/Ashok.jpg" alt="Mr. Ashok Brahma"></div>
+                            <h4 class="hierarchy-member-name">Mr. Ashok Brahma</h4>
+                            <span class="student-role-badge">CONVENOR</span>
+                        </div>
+                        <div class="student-member">
+                            <div class="hierarchy-member-photo"><img src="media/Barsha Rani Mahela (Volunteer convener) mail-u22cel2061@cit.ac.in .JPG" alt="Ms. Barsha Rani Mahela"></div>
+                            <h4 class="hierarchy-member-name">Ms. Barsha Rani Mahela</h4>
+                            <span class="student-role-badge">CONVENOR</span>
                         </div>
                     </div>
                     </div>
@@ -3555,21 +3704,39 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
 
                 <!-- Team 4: Technical Team -->
                 <div class="team-group" data-team="4">
-                    <h3 class="team-title">Technical Team</h3>
+                    <h3 class="team-title">PUBLIC RELATION & SPONSOR</h3>
                     <div class="team-content">
                     <div class="faculty-member">
-                        <div class="hierarchy-member-photo">?</div>
-                        <h4 class="hierarchy-member-name">Faculty Name 4</h4>
-                        <span class="member-role-badge">Technical Advisor</span>
-                        <p class="hierarchy-member-desc">Technical infrastructure guidance</p>
+                        <div class="hierarchy-member-photo"><img src="media/JD.jpg" alt="Mr. J. D. H Basumatary"></div>
+                        <h4 class="hierarchy-member-name">Mr. J. D. H Basumatary, Asstt. Professor, Dept. of HSS</h4>
+                        <span class="member-role-badge">FACULTY-IN-CHARGE</span>
+                    </div>
+                    <div class="faculty-member">
+                        <div class="hierarchy-member-photo"><img src="media/Gunajyoti.jpg" alt="Dr. Gunajyoti Das"></div>
+                        <h4 class="hierarchy-member-name">Dr. Gunajyoti Das, Asstt. Professor, Dept. of Chemistry</h4>
+                        <span class="member-role-badge">MEMBER</span>
                     </div>
                     <div class="hierarchy-connector"></div>
                     <div class="student-members">
                         <div class="student-member">
-                            <div class="hierarchy-member-photo">?</div>
-                            <h4 class="hierarchy-member-name">Student Name</h4>
-                            <span class="student-role-badge">Technical Head</span>
-                            <p class="hierarchy-member-desc">Managing tech operations</p>
+                            <div class="hierarchy-member-photo"><img src="media/mONJIM.png" alt="Mr. Manjim Das"></div>
+                            <h4 class="hierarchy-member-name">Mr. Manjim Das</h4>
+                            <span class="student-role-badge">CONVENOR</span>
+                        </div>
+                        <div class="student-member">
+                            <div class="hierarchy-member-photo"><img src="media/Bhrigu.jpeg" alt="Mr. Bhrigu Gogoi"></div>
+                            <h4 class="hierarchy-member-name">Mr. Bhrigu Gogoi</h4>
+                            <span class="student-role-badge">CONVENOR</span>
+                        </div>
+                        <div class="student-member">
+                            <div class="hierarchy-member-photo"><img src="media/Dibinita.jpeg" alt="Ms. Dibinita Mushahary"></div>
+                            <h4 class="hierarchy-member-name">Ms. Dibinita Mushahary</h4>
+                            <span class="student-role-badge">ASSTT. CONVENOR</span>
+                        </div>
+                        <div class="student-member">
+                            <div class="hierarchy-member-photo"><img src="media/Gynadeep u22mcd1013@cit.ac.in gya_n_deep.jpg" alt="Mr. Gyandeep Basumatary"></div>
+                            <h4 class="hierarchy-member-name">Mr.Gyandeep Basumatary</h4>
+                            <span class="student-role-badge">ASSTT. CONVENOR</span>
                         </div>
                     </div>
                     </div>
@@ -3577,43 +3744,89 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
 
                 <!-- Team 5: Publicity & Media -->
                 <div class="team-group" data-team="5">
-                    <h3 class="team-title">Publicity & Media</h3>
+                    <h3 class="team-title">CULTURAL</h3>
                     <div class="team-content">
                     <div class="faculty-member">
-                        <div class="hierarchy-member-photo">?</div>
-                        <h4 class="hierarchy-member-name">Faculty Name 5</h4>
-                        <span class="member-role-badge">Media Advisor</span>
-                        <p class="hierarchy-member-desc">Publicity and media relations</p>
+                        <div class="hierarchy-member-photo"><img src="media/Anuck.jpg" alt="Dr. Anuck Islary"></div>
+                        <h4 class="hierarchy-member-name">Dr. Anuck Islary, Asstt. Professor, Dept. of FET</h4>
+                        <span class="member-role-badge">FACULTY-IN-CHARGE</span>
+                    </div>
+                    <div class="faculty-member">
+                        <div class="hierarchy-member-photo"><img src="media/Bhaskar saha.jpg" alt="Dr. Bhaskar Saha"></div>
+                        <h4 class="hierarchy-member-name">Dr. Bhaskar Saha, Asstt. Professor, Dept. of MCD</h4>
+                        <span class="member-role-badge">MEMBER</span>
+                    </div>
+                    <div class="faculty-member">
+                        <div class="hierarchy-member-photo"><img src="media/Ranjan Patowary.jpg" alt="Dr. Ranjan Patowary"></div>
+                        <h4 class="hierarchy-member-name">Dr. Ranjan Patowary, Asstt. Professor, Dept. of CSE</h4>
+                        <span class="member-role-badge">MEMBER</span>
                     </div>
                     <div class="hierarchy-connector"></div>
-                    <div class="student-members">
+                    <div class="student-members" style="grid-template-columns: repeat(3, 1fr);">
                         <div class="student-member">
-                            <div class="hierarchy-member-photo">?</div>
-                            <h4 class="hierarchy-member-name">Student Name</h4>
-                            <span class="student-role-badge">Publicity Head</span>
-                            <p class="hierarchy-member-desc">Media and promotions</p>
+                            <div class="hierarchy-member-photo"><img src="media/Pranabjyoti.jpg" alt="Mr. Pranabjyoti Chutia"></div>
+                            <h4 class="hierarchy-member-name">Mr. Pranabjyoti Chutia</h4>
+                            <span class="student-role-badge">CONVENOR</span>    
+                        </div>
+                        <div class="student-member">
+                            <div class="hierarchy-member-photo"><img src="media/Ritumoni gogoi Cultural Convenor.jpg" alt="Ms. Ritumoni Gogoi"></div>
+                            <h4 class="hierarchy-member-name">Ms. Ritumoni Gogoi</h4>
+                            <span class="student-role-badge">CONVENOR</span>
+                        </div>
+                        <div class="student-member">
+                            <div class="hierarchy-member-photo"><img src="media/Rituporna Gogoi u22ecel2062@cit.ac.in.jpeg" alt="Mr. Rituporna Gogoi"></div>
+                            <h4 class="hierarchy-member-name">Mr. Rituporna Gogoi</h4>
+                            <span class="student-role-badge">ASSTT. CONVENOR</span>
                         </div>
                     </div>
                     </div>
-                </div>
+                </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 
                 <!-- Team 6: Sponsorship -->
                 <div class="team-group" data-team="6">
-                    <h3 class="team-title">Sponsorship</h3>
+                    <h3 class="team-title">ART & CRAFT(INCLUDING DECORATION)</h3>
                     <div class="team-content">
                     <div class="faculty-member">
-                        <div class="hierarchy-member-photo">?</div>
-                        <h4 class="hierarchy-member-name">Faculty Name 6</h4>
-                        <span class="member-role-badge">Finance Advisor</span>
-                        <p class="hierarchy-member-desc">Sponsorship and finance</p>
+                        <div class="hierarchy-member-photo"><img src="media/Abhijit Padun.jpg" alt="Dr. Abhijit Padun"></div>
+                        <h4 class="hierarchy-member-name">Dr. Abhijit Padun, Asstt. Professor, Dept. of MCD</h4>
+                        <span class="member-role-badge">FACULTY-IN-CHARGE</span>
                     </div>
-                    <div class="hierarchy-connector"></div>
-                    <div class="student-members">
+                    <div class="faculty-member">
+                        <div class="hierarchy-member-photo"><img src="media/Subash.jpg" alt="Mr. Subash Rai"></div>
+                        <h4 class="hierarchy-member-name">Mr. Subash Rai, Asstt. Professor, Dept. of MCD</h4>
+                        <span class="member-role-badge">MEMBER</span>
+                    </div>
+                    <div class="hierarchy-connector"></div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                    <div class="student-members" style="grid-template-columns: repeat(3, 1fr);">
                         <div class="student-member">
-                            <div class="hierarchy-member-photo">?</div>
-                            <h4 class="hierarchy-member-name">Student Name</h4>
-                            <span class="student-role-badge">Sponsorship Head</span>
-                            <p class="hierarchy-member-desc">Managing sponsors</p>
+                            <div class="hierarchy-member-photo"><img src="media/Suhail Raja.jpg" alt="Mr. Suhail Raja"></div>
+                            <h4 class="hierarchy-member-name">Mr. Suhail Raja</h4>
+                            <span class="student-role-badge">CONVENOR</span>
+                            <p class="hierarchy-member-desc">Art & Craft</p>
+                        </div>
+                        <div class="student-member">
+                            <div class="hierarchy-member-photo"><img src="media/email id- nargisyasmin07@gmail.com, insta id- _nargis.y (1).JPG" alt="Ms. Nargis Iyasmin"></div>
+                            <h4 class="hierarchy-member-name">Ms.Nargis Iyasmin</h4>
+                            <span class="student-role-badge">ASSTT. CONVENOR</span>
+                            <p class="hierarchy-member-desc">Art & Craft</p>
+                        </div>
+                        <div class="student-member">
+                            <div class="hierarchy-member-photo"><img src="media/Rishab nath.JPG" alt="Mr. Rishab Nath"></div>
+                            <h4 class="hierarchy-member-name">Mr. Rishab Nath</h4>
+                            <span class="student-role-badge">CONVENOR</span>
+                            <p class="hierarchy-member-desc">Decoration</p>
+                        </div>
+                        <div class="student-member">
+                            <div class="hierarchy-member-photo"><img src="media/Ashish Maurya u22fetl2067@cit.ac.in ashish._.maurya.jpeg" alt="Mr. Ashish Maurya"></div>
+                            <h4 class="hierarchy-member-name">Mr. Ashish Maurya</h4>
+                            <span class="student-role-badge">CONVENOR</span>
+                            <p class="hierarchy-member-desc">Decoration</p>
+                        </div>
+                        <div class="student-member">
+                            <div class="hierarchy-member-photo"><img src="media/Himashree Bhagabati u22fetl2062@cit.ac.in .jpg.jpeg" alt="Ms. Himashree Bhagabati"></div>
+                            <h4 class="hierarchy-member-name">Ms. Himashree Bhagabati</h4>
+                            <span class="student-role-badge">ASSTT. CONVENOR</span>
+                            <p class="hierarchy-member-desc">Decoration</p>
                         </div>
                     </div>
                     </div>
@@ -3621,21 +3834,34 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
 
                 <!-- Team 7: Stage & Decorations -->
                 <div class="team-group" data-team="7">
-                    <h3 class="team-title">Stage & Decorations</h3>
+                    <h3 class="team-title">LITERARY, DEBATE & SYMPOSIUM</h3>
                     <div class="team-content">
                     <div class="faculty-member">
-                        <div class="hierarchy-member-photo">?</div>
-                        <h4 class="hierarchy-member-name">Faculty Name 7</h4>
-                        <span class="member-role-badge">Creative Advisor</span>
-                        <p class="hierarchy-member-desc">Stage design oversight</p>
+                        <div class="hierarchy-member-photo"><img src="media/Abhijit Deka.jpg" alt="Dr. Abhijit Deka"></div>
+                        <h4 class="hierarchy-member-name">Dr. Abhijit Deka, Asstt. Professor, Dept. of CE</h4>
+                        <span class="member-role-badge">FACULTY-IN-CHARGE</span>
+                    </div>
+                    <div class="faculty-member">
+                        <div class="hierarchy-member-photo"><img src="media/Mainao.jpeg" alt="Dr. Mainao Alina Gayary"></div>
+                        <h4 class="hierarchy-member-name">Dr. Mainao Alina Gayary, Asstt. Professor, Dept. of FET</h4>
+                        <span class="member-role-badge">MEMBER</span>
+                    </div>
+                    <div class="faculty-member">
+                        <div class="hierarchy-member-photo"><img src="media/Kaushlendra Kumar Pandey.jpg" alt="Dr. Kaushlendra Kr. Pandev"></div>
+                        <h4 class="hierarchy-member-name">Dr. Kaushlendra Kr. Pandev, Asstt. Professor, Dept. of ECE</h4>
+                        <span class="member-role-badge">MEMBER</span>
                     </div>
                     <div class="hierarchy-connector"></div>
                     <div class="student-members">
                         <div class="student-member">
-                            <div class="hierarchy-member-photo">?</div>
-                            <h4 class="hierarchy-member-name">Student Name</h4>
-                            <span class="student-role-badge">Stage Head</span>
-                            <p class="hierarchy-member-desc">Stage and decorations</p>
+                            <div class="hierarchy-member-photo"><img src="media/Waki.JPG" alt="Mr. Wakibtz Zaman"></div>
+                            <h4 class="hierarchy-member-name">Mr. Wakibtz Zaman</h4>
+                            <span class="student-role-badge">CONVENOR</span>
+                        </div>
+                        <div class="student-member">
+                            <div class="hierarchy-member-photo"><img src="media/Swapnali.JPG" alt="Ms. Swapnali Devi"></div>
+                            <h4 class="hierarchy-member-name">Ms. Swapnali Devi</h4>
+                            <span class="student-role-badge">ASSTT. CONVENOR</span>
                         </div>
                     </div>
                     </div>
@@ -3643,21 +3869,39 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
 
                 <!-- Team 8: Hospitality -->
                 <div class="team-group" data-team="8">
-                    <h3 class="team-title">Hospitality</h3>
+                    <h3 class="team-title">STAGE MANAGEMENT</h3>
                     <div class="team-content">
                     <div class="faculty-member">
-                        <div class="hierarchy-member-photo">?</div>
-                        <h4 class="hierarchy-member-name">Faculty Name 8</h4>
-                        <span class="member-role-badge">Hospitality Advisor</span>
-                        <p class="hierarchy-member-desc">Guest and artist hospitality</p>
+                        <div class="hierarchy-member-photo"><img src="media/Sahalad.jpg" alt="Dr. Sahalad Borgoyary"></div>
+                        <h4 class="hierarchy-member-name">Dr. Sahalad Borgoyary, Asstt. Professor, Dept. of Mathematics</h4>
+                        <span class="member-role-badge">FACULTY-IN-CHARGE</span>
+                    </div>
+                    <div class="faculty-member">
+                        <div class="hierarchy-member-photo"><img src="media/Jackie.jpg" alt="Mr. Jackie Brahma"></div>
+                        <h4 class="hierarchy-member-name">Mr. Jackie Brahma, Asstt. Professor, Dept. of CE</h4>
+                        <span class="member-role-badge">MEMBER</span>
+                    </div>
+                    <div class="faculty-member">
+                        <div class="hierarchy-member-photo"><img src="media/Abhijit Paul.jpg" alt="Mr. Aviiit Paul"></div>
+                        <h4 class="hierarchy-member-name">Mr. Aviiit Paul, Asstt. Professor, Dept. of CE</h4>
+                        <span class="member-role-badge">MEMBER</span>
                     </div>
                     <div class="hierarchy-connector"></div>
-                    <div class="student-members">
+                    <div class="student-members" style="grid-template-columns: repeat(3, 1fr);">
                         <div class="student-member">
-                            <div class="hierarchy-member-photo">?</div>
-                            <h4 class="hierarchy-member-name">Student Name</h4>
-                            <span class="student-role-badge">Hospitality Head</span>
-                            <p class="hierarchy-member-desc">Guest management</p>
+                            <div class="hierarchy-member-photo"><img src="media/PRITIWIRAJ RAI.jpg" alt="Mr. Prithwiraj Ray"></div>
+                            <h4 class="hierarchy-member-name">Mr. Prithwiraj Ray</h4>
+                            <span class="student-role-badge">CONVENOR</span>
+                        </div>
+                        <div class="student-member">
+                            <div class="hierarchy-member-photo"><img src="media/Gwjwn.png" alt="Mr. GwiwnSwrang Boro"></div>
+                            <h4 class="hierarchy-member-name">Mr. GwiwnSwrang Boro</h4>
+                            <span class="student-role-badge">CONVENOR</span>
+                        </div>
+                        <div class="student-member">
+                            <div class="hierarchy-member-photo"><img src="media/Sanghamitra Ray u22iel2063@cit.ac.in.JPG" alt="Ms. Sanghamitra Ray"></div>
+                            <h4 class="hierarchy-member-name">Ms. Sanghamitra Ray</h4>
+                            <span class="student-role-badge">ASSTT. CONVENOR</span>
                         </div>
                     </div>
                     </div>
@@ -3665,21 +3909,31 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
 
                 <!-- Team 9: Security & Discipline -->
                 <div class="team-group" data-team="9">
-                    <h3 class="team-title">Security & Discipline</h3>
+                    <h3 class="team-title">SOCIAL MEDIA & WEBSITE</h3>
                     <div class="team-content">
                     <div class="faculty-member">
-                        <div class="hierarchy-member-photo">?</div>
-                        <h4 class="hierarchy-member-name">Faculty Name 9</h4>
-                        <span class="member-role-badge">Security Advisor</span>
-                        <p class="hierarchy-member-desc">Safety and security oversight</p>
+                        <div class="hierarchy-member-photo"><img src="media/BKC.jpg" alt="Mr. Bikrajit Choudhury"></div>
+                        <h4 class="hierarchy-member-name">Mr. Bikrajit Choudhury, Asstt. Professor, Dept. of CSE</h4>
+                        <span class="member-role-badge">FACULTY-IN-CHARGE</span>
+                    </div>
+                    <div class="faculty-member">
+                        <div class="hierarchy-member-photo"><img src="media/Mwnthai.png" alt="Mr. Mwnthai Narzary"></div>
+                        <h4 class="hierarchy-member-name">Mr. Mwnthai Narzary, JTS, (System Admin)</h4>
+                        <span class="member-role-badge">MEMBER</span>
                     </div>
                     <div class="hierarchy-connector"></div>
                     <div class="student-members">
                         <div class="student-member">
-                            <div class="hierarchy-member-photo">?</div>
-                            <h4 class="hierarchy-member-name">Student Name</h4>
-                            <span class="student-role-badge">Security Head</span>
-                            <p class="hierarchy-member-desc">Security coordination</p>
+                            <div class="hierarchy-member-photo"><img src="media/Tapan.jpeg" alt="Tapan Khakhlary"></div>
+                            <h4 class="hierarchy-member-name">Tapan Khakhlary</h4>
+                            <span class="student-role-badge">CONVENOR</span>
+                            <p class="hierarchy-member-desc">WEBSITE</p>
+                        </div>
+                        <div class="student-member">
+                            <div class="hierarchy-member-photo"><img src="media/Nayanmoni Daimary u22ece1038@cit.ac.in hanae_143_.JPG" alt="Ms. Nayanmoni Daimary"></div>
+                            <h4 class="hierarchy-member-name">Ms. Nayanmoni Daimary</h4>
+                            <span class="student-role-badge">CONVENOR</span>
+                            <p class="hierarchy-member-desc">Social media</p>
                         </div>
                     </div>
                     </div>
@@ -3687,21 +3941,29 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
 
                 <!-- Team 10: Registration & Documentation -->
                 <div class="team-group" data-team="10">
-                    <h3 class="team-title">Registration & Documentation</h3>
+                    <h3 class="team-title">FINANCE</h3>
                     <div class="team-content">
                     <div class="faculty-member">
-                        <div class="hierarchy-member-photo">?</div>
-                        <h4 class="hierarchy-member-name">Faculty Name 10</h4>
-                        <span class="member-role-badge">Admin Advisor</span>
-                        <p class="hierarchy-member-desc">Registration and records</p>
+                        <div class="hierarchy-member-photo"><img src="media/Borat.jpg" alt="Mr. Borat Basumatari"></div>
+                        <h4 class="hierarchy-member-name">Mr. Borat Basumatari, Asstt. Professor, Dept. of IE</h4>
+                        <span class="member-role-badge">FACULTY-IN-CHARGE</span>
+                    </div>
+                    <div class="faculty-member">
+                        <div class="hierarchy-member-photo"><img src="media/Manasi-Buzar-Baruah.webp" alt="Dr. Manasi Buzar Baruah"></div>
+                        <h4 class="hierarchy-member-name">Dr. Manasi Buzar Baruah, Asstt. Professor, Dept, of Physics</h4>
+                        <span class="member-role-badge">MEMBER</span>
                     </div>
                     <div class="hierarchy-connector"></div>
                     <div class="student-members">
                         <div class="student-member">
-                            <div class="hierarchy-member-photo">?</div>
-                            <h4 class="hierarchy-member-name">Student Name</h4>
-                            <span class="student-role-badge">Registration Head</span>
-                            <p class="hierarchy-member-desc">Participant registration</p>
+                            <div class="hierarchy-member-photo"><img src="media/Pranjit u22cel2064@cit.ac.in pran_jit.jpeg" alt="Mr. Pranjit Das"></div>
+                            <h4 class="hierarchy-member-name">Mr. Pranjit Das</h4>
+                            <span class="student-role-badge">CONVENOR</span>
+                        </div>
+                        <div class="student-member">
+                            <div class="hierarchy-member-photo"><img src="media/Ritusha Bora u22ce1028@cit.ac.in tyndall_in_life.JPG" alt="Ms. Ritusha Bora"></div>
+                            <h4 class="hierarchy-member-name">Ms. Ritusha Bora</h4>
+                            <span class="student-role-badge">ASSTT. CONVENOR</span>
                         </div>
                     </div>
                     </div>
@@ -3709,21 +3971,24 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
 
                 <!-- Team 11: Food & Refreshments -->
                 <div class="team-group" data-team="11">
-                    <h3 class="team-title">Food & Refreshments</h3>
+                    <h3 class="team-title">FOODING & ACCOMMODATION</h3>
                     <div class="team-content">
                     <div class="faculty-member">
-                        <div class="hierarchy-member-photo">?</div>
-                        <h4 class="hierarchy-member-name">Faculty Name 11</h4>
-                        <span class="member-role-badge">F&B Advisor</span>
-                        <p class="hierarchy-member-desc">Food and beverage management</p>
+                        <div class="hierarchy-member-photo"><img src="media/Borat.jpg" alt="Mr. Borat Basumatari"></div>
+                        <h4 class="hierarchy-member-name">Mr. Borat Basumatari, Asstt. Professor, Dept. of IE.</h4>
+                        <span class="member-role-badge">FACULTY-IN-CHARGE</span>
                     </div>
                     <div class="hierarchy-connector"></div>
                     <div class="student-members">
                         <div class="student-member">
-                            <div class="hierarchy-member-photo">?</div>
-                            <h4 class="hierarchy-member-name">Student Name</h4>
-                            <span class="student-role-badge">F&B Head</span>
-                            <p class="hierarchy-member-desc">Food arrangements</p>
+                            <div class="hierarchy-member-photo"><img src="media/Bhargav Deori u22iel2064@cit.ac.in bhargav_6422.jpeg" alt="Mr. Bhargav Bikash Deori"></div>
+                            <h4 class="hierarchy-member-name">Mr. Bhargav Bikash Deori</h4>
+                            <span class="student-role-badge">CONVENOR</span>
+                        </div>
+                        <div class="student-member">
+                            <div class="hierarchy-member-photo"><img src="media/Sneha.lama.jpg" alt="Ms. Sneha Lama"></div>
+                            <h4 class="hierarchy-member-name">Ms. Sneha Lama</h4>
+                            <span class="student-role-badge">CONVENOR</span>
                         </div>
                     </div>
                     </div>
@@ -3731,21 +3996,24 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
 
                 <!-- Team 12: Transportation -->
                 <div class="team-group" data-team="12">
-                    <h3 class="team-title">Transportation</h3>
+                    <h3 class="team-title">EVENT MANAGEMENT</h3>
                     <div class="team-content">
-                    <div class="faculty-member">
-                        <div class="hierarchy-member-photo">?</div>
-                        <h4 class="hierarchy-member-name">Faculty Name 12</h4>
-                        <span class="member-role-badge">Transport Advisor</span>
-                        <p class="hierarchy-member-desc">Transportation logistics</p>
+                    <div class="faculty-member">                                                                  
+                        <div class="hierarchy-member-photo"><img src="media/Borat.jpg" alt="Mr. Borat Basumatari"></div>
+                        <h4 class="hierarchy-member-name">Mr. Borat Basumatari, Asstt. Professor, Dept. of IE.</h4>
+                        <span class="member-role-badge">FACULTY-IN-CHARGE</span>
                     </div>
                     <div class="hierarchy-connector"></div>
                     <div class="student-members">
                         <div class="student-member">
-                            <div class="hierarchy-member-photo">?</div>
-                            <h4 class="hierarchy-member-name">Student Name</h4>
-                            <span class="student-role-badge">Transport Head</span>
-                            <p class="hierarchy-member-desc">Vehicle coordination</p>
+                            <div class="hierarchy-member-photo"><img src="media/Lakhyajit.png" alt="Mr. Lakhyajit Boro"></div>
+                            <h4 class="hierarchy-member-name">Mr. Lakhyajit Boro</h4>
+                            <span class="student-role-badge">CONVENOR</span>
+                        </div>
+                        <div class="student-member">
+                            <div class="hierarchy-member-photo"><img src="media/Monisha.jpg" alt="Ms. Monisha Brahma"></div>
+                            <h4 class="hierarchy-member-name">Ms. Monisha Brahma</h4>
+                            <span class="student-role-badge">ASSTT. CONVENOR</span>
                         </div>
                     </div>
                     </div>
@@ -3753,43 +4021,18 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
 
                 <!-- Team 13: Photography & Videography -->
                 <div class="team-group" data-team="13">
-                    <h3 class="team-title">Photography & Videography</h3>
+                    <h3 class="team-title">MERCHANDISE</h3>
                     <div class="team-content">
-                    <div class="faculty-member">
-                        <div class="hierarchy-member-photo">?</div>
-                        <h4 class="hierarchy-member-name">Faculty Name 13</h4>
-                        <span class="member-role-badge">Media Advisor</span>
-                        <p class="hierarchy-member-desc">Visual documentation oversight</p>
-                    </div>
-                    <div class="hierarchy-connector"></div>
                     <div class="student-members">
                         <div class="student-member">
                             <div class="hierarchy-member-photo">?</div>
-                            <h4 class="hierarchy-member-name">Student Name</h4>
-                            <span class="student-role-badge">Media Head</span>
-                            <p class="hierarchy-member-desc">Photo & video coverage</p>
+                            <h4 class="hierarchy-member-name">Mr. Rajdeep Mili</h4>
+                            <span class="student-role-badge">CONVENOR</span>
                         </div>
-                    </div>
-                    </div>
-                </div>
-
-                <!-- Team 14: Competitions & Judging -->
-                <div class="team-group" data-team="14">
-                    <h3 class="team-title">Competitions & Judging</h3>
-                    <div class="team-content">
-                    <div class="faculty-member">
-                        <div class="hierarchy-member-photo">?</div>
-                        <h4 class="hierarchy-member-name">Faculty Name 14</h4>
-                        <span class="member-role-badge">Competition Advisor</span>
-                        <p class="hierarchy-member-desc">Competition management</p>
-                    </div>
-                    <div class="hierarchy-connector"></div>
-                    <div class="student-members">
                         <div class="student-member">
-                            <div class="hierarchy-member-photo">?</div>
-                            <h4 class="hierarchy-member-name">Student Name</h4>
-                            <span class="student-role-badge">Competition Head</span>
-                            <p class="hierarchy-member-desc">Managing competitions</p>
+                            <div class="hierarchy-member-photo"><img src="media/Youanchi Kwan.jpg" alt="Mr. Youanchi Kwan"></div>
+                            <h4 class="hierarchy-member-name">Mr. Youanchi Kwan</h4>
+                            <span class="student-role-badge">CONVENOR</span>
                         </div>
                     </div>
                     </div>
@@ -3822,7 +4065,7 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                     <div class="merch-slide">
                         <div class="merch-slide-header">
                             <h3>🤍 White T-Shirt Collection</h3>
-                            <p>Classic white designs • ₹399 each</p>
+                            <p>Classic white designs</p>
                         </div>
                         <div class="merch-slide-content">
                             <div class="merch-item">
@@ -3831,7 +4074,6 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                                 </div>
                                 <div class="merch-info">
                                     <h3>White T-Shirt (Back)</h3>
-                                    <p class="price">₹399</p>
                                     <p>Official Ecstasy 2026 T-Shirt - Back Design</p>
                                 </div>
                             </div>
@@ -3842,7 +4084,6 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                                 </div>
                                 <div class="merch-info">
                                     <h3>White T-Shirt (Front)</h3>
-                                    <p class="price">₹399</p>
                                     <p>Official Ecstasy 2026 T-Shirt - Front Design</p>
                                 </div>
                             </div>
@@ -3853,7 +4094,6 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                                 </div>
                                 <div class="merch-info">
                                     <h3>White T-Shirt</h3>
-                                    <p class="price">₹399</p>
                                     <p>Official Ecstasy 2026 T-Shirt</p>
                                 </div>
                             </div>
@@ -3864,7 +4104,7 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                     <div class="merch-slide">
                         <div class="merch-slide-header">
                             <h3>🖤 Black T-Shirt Collection</h3>
-                            <p>Bold black designs • ₹399 each</p>
+                            <p>Bold black designs</p>
                         </div>
                         <div class="merch-slide-content">
                             <div class="merch-item">
@@ -3873,7 +4113,6 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                                 </div>
                                 <div class="merch-info">
                                     <h3>Black T-Shirt (Back)</h3>
-                                    <p class="price">₹399</p>
                                     <p>Official Ecstasy 2026 T-Shirt - Back Design</p>
                                 </div>
                             </div>
@@ -3884,7 +4123,6 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                                 </div>
                                 <div class="merch-info">
                                     <h3>Black T-Shirt (Front)</h3>
-                                    <p class="price">₹399</p>
                                     <p>Official Ecstasy 2026 T-Shirt - Front Design</p>
                                 </div>
                             </div>
@@ -3895,7 +4133,6 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                                 </div>
                                 <div class="merch-info">
                                     <h3>Black T-Shirt</h3>
-                                    <p class="price">₹399</p>
                                     <p>Official Ecstasy 2026 T-Shirt</p>
                                 </div>
                             </div>
@@ -3944,50 +4181,26 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 <div class="schedule-content">
                 
                 <div class="schedule-item">
-                    <div class="schedule-time">8:00 AM – 9:30 AM</div>
+                    <div class="schedule-time">8:30 AM – 8:45 AM</div>
                     <div class="schedule-details">
-                        <h4>Flag Hosting by Director sir</h4>
+                        <h4>FLAG HOISTING BY REGISTRAR (i/c)</h4>
                         <p class="venue">Administrative Building</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">8:30 AM – 10:30 AM</div>
+                    <div class="schedule-time">8:45 AM – 10:30 AM</div>
                     <div class="schedule-details">
                         <h4>Cultural Rally</h4>
-                        <p class="venue">Administrative Building</p>
-                    </div>
-                </div>
-
-                <div class="schedule-item">
-                    <div class="schedule-time">10:30 AM – 12:30 AM</div>
-                    <div class="schedule-details">
-                        <h4>Essay Writing Competition</h4>
-                        <p class="venue">BKB</p>
+                        <p class="venue">CITK campus to Bodoland University and back</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
                     <div class="schedule-time">10:30 AM – 12:30 PM</div>
                     <div class="schedule-details">
-                        <h4>Poem Writing Competition</h4>
-                        <p class="venue">BKB</p>
-                    </div>
-                </div>
-
-                <div class="schedule-item">
-                    <div class="schedule-time">10:30 AM – 12:30 PM</div>
-                    <div class="schedule-details">
-                        <h4>Speech Writing Competition</h4>
-                        <p class="venue">BKB</p>
-                    </div>
-                </div>
-
-                <div class="schedule-item">
-                    <div class="schedule-time">10:30 AM – 12:30 PM</div>
-                    <div class="schedule-details">
-                        <h4>Letter Writing Competition</h4>
-                        <p class="venue">BKB</p>
+                        <h4>Essay/ Poem/ Speech/ Letter Writing Competitions</h4>
+                        <p class="venue">BKB Seminar Hall</p>
                     </div>
                 </div>
 
@@ -3995,15 +4208,15 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                     <div class="schedule-time">10:30 AM – 11:30 AM</div>
                     <div class="schedule-details">
                         <h4>Rangoli Competition</h4>
-                        <p class="venue">Classroom</p>
+                        <p class="venue">Academic Class Room</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
                     <div class="schedule-time">11:30 AM – 12:30 PM</div>
                     <div class="schedule-details">
-                        <h4>Mehnedi Competition</h4>
-                        <p class="venue">Classroom</p>
+                        <h4>Mehendi Competition</h4>
+                        <p class="venue">Academic Class Room</p>
                     </div>
                 </div>
 
@@ -4011,7 +4224,7 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                     <div class="schedule-time">1:30 PM – 2:30 PM</div>
                     <div class="schedule-details">
                         <h4>Face Painting Competition</h4>
-                        <p class="venue">Gallery -3</p>
+                        <p class="venue">Gallery - 3</p>
                     </div>
                 </div>
 
@@ -4019,23 +4232,47 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                     <div class="schedule-time">2:30 PM – 3:30 PM</div>
                     <div class="schedule-details">
                         <h4>Bottle Painting / Pin Point</h4>
-                        <p class="venue">Gallery -3</p>
+                        <p class="venue">Gallery - 3</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">3:30PM – 4:20 PM</div>
+                    <div class="schedule-time">3:30PM – 4:00 PM</div>
                     <div class="schedule-details">
                         <h4>Doodle Art</h4>
-                        <p class="venue">Gallery -3</p>
+                        <p class="venue">Gallery - 3</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
                     <div class="schedule-time">4:00PM – 5:30 PM</div>
                     <div class="schedule-details">
-                        <h4>Poem Recitation /Extempore speech/Prayer Competition</h4>
-                        <p class="venue">VC3</p>
+                        <h4>Poem Recitation /Extempore speech/Shayari Competition</h4>
+                        <p class="venue">Virtual Class Room</p>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">4:30 PM – 5:30 PM</div>
+                    <div class="schedule-details">
+                        <h4>Flash Mob</h4>
+                        <p class="venue">CITK Bus Stand</p>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">5:30 PM – 6:30 PM</div>
+                    <div class="schedule-details">
+                        <h4>XOPUN Drama Club</h4>
+                        <p class="venue">CITK Bus Stand</p>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">6:30 PM – 10:00 PM</div>
+                    <div class="schedule-details">
+                        <h4>OPEN Mic</h4>
+                        <p class="venue">Near Madwi Canteen</p>
                     </div>
                 </div>
                 </div>
@@ -4046,15 +4283,7 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 <div class="schedule-content">
                 
                 <div class="schedule-item">
-                    <div class="schedule-time">4:00AM</div>
-                    <div class="schedule-details">
-                        <h4>Marathon</h4>
-                        <p class="venue">Gate to DV (UPDOWN)</p>
-                    </div>
-                </div>
-
-                <div class="schedule-item">
-                    <div class="schedule-time">9:30AM – 12:00 PM</div>
+                    <div class="schedule-time">9:30AM – 11:00 AM</div>
                     <div class="schedule-details">
                         <h4>Quiz Competition</h4>
                         <p class="venue">Main Stage</p>
@@ -4072,7 +4301,7 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 <div class="schedule-item">
                     <div class="schedule-time">10:30 AM – 11:30 AM</div>
                     <div class="schedule-details">
-                        <h4>Art in every fold</h4>
+                        <h4>Art in every Fold</h4>
                         <p class="venue">Classroom</p>
                     </div>
                 </div>
@@ -4086,9 +4315,17 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 </div>
 
                 <div class="schedule-item">
+                    <div class="schedule-time">12:30 PM – 1:30 PM</div>
+                    <div class="schedule-details">
+                        <h4>Bike Stunt</h4>
+                        <p class="venue">CIT Campus</p>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
                     <div class="schedule-time">1:30 PM – 2:30 PM</div>
                     <div class="schedule-details">
-                        <h4>Melody Showdown</h4>
+                        <h4>Spotlight Showdown Competition</h4>
                         <p class="venue">BKB</p>
                     </div>
                 </div>
@@ -4096,15 +4333,23 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 <div class="schedule-item">
                     <div class="schedule-time">1:30 PM – 3:00 PM</div>
                     <div class="schedule-details">
-                        <h4>Semidclassical dance competition</h4>
+                        <h4>Spotlight Showdown Competition</h4>
                         <p class="venue">Main Stage</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">3:00 PM – 3:30 PM</div>
+                    <div class="schedule-time">3:00 PM – 3:20 PM</div>
                     <div class="schedule-details">
-                        <h4>Mimes Mosaic</h4>
+                        <h4>Lighting of Lamp by Dean</h4>
+                        <p class="venue">Main Stage</p>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">3:20 PM – 3:30 PM</div>
+                    <div class="schedule-details">
+                        <h4>Speech By Dean of Student</h4>
                         <p class="venue">Main Stage</p>
                     </div>
                 </div>
@@ -4112,13 +4357,21 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 <div class="schedule-item">
                     <div class="schedule-time">3:30 PM – 4:00 PM</div>
                     <div class="schedule-details">
-                        <h4>Variety Show</h4>
+                        <h4>SEREGA inauguration</h4>
                         <p class="venue">Main Stage</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">4:00 PM – 5:00 PM</div>
+                    <div class="schedule-time">4:00 PM – 4:30 PM</div>
+                    <div class="schedule-details">
+                        <h4>Daosri Delai Dance</h4>
+                        <p class="venue">Main Stage</p>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">4:30 PM – 5:00 PM</div>
                     <div class="schedule-details">
                         <h4>Variety Show</h4>
                         <p class="venue">Main Stage</p>
@@ -4126,7 +4379,7 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">5:00 PM – 6:30 PM</div>
+                    <div class="schedule-time">5:00 PM – 6:00 PM</div>
                     <div class="schedule-details">
                         <h4>Ramp Walk (First Round)</h4>
                         <p class="venue">Main Stage</p>
@@ -4134,7 +4387,7 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">6:30 PM – 7:00 PM</div>
+                    <div class="schedule-time">6:00 PM – 6:30 PM</div>
                     <div class="schedule-details">
                         <h4>Variety Show</h4>
                         <p class="venue">Main Stage</p>
@@ -4142,9 +4395,17 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 </div>
 
                 <div class="schedule-item">
+                    <div class="schedule-time">6:30 PM – 7:00 PM</div>
+                    <div class="schedule-details">
+                        <h4>The Khobam Club (MORISIKA)</h4>
+                        <p class="venue">Main Stage</p>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
                     <div class="schedule-time">7:00 PM – 8:00 PM</div>
                     <div class="schedule-details">
-                        <h4>Khobam Band (MORISIKA)</h4>
+                        <h4>Ramp walk (Title Round)</h4>
                         <p class="venue">Main Stage</p>
                     </div>
                 </div>
@@ -4152,7 +4413,7 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 <div class="schedule-item">
                     <div class="schedule-time">8:00 PM – 9:00 PM</div>
                     <div class="schedule-details">
-                        <h4>Ramp walk(Title Round)</h4>
+                        <h4>Performance by Singer Nilav Nita</h4>
                         <p class="venue">Main Stage</p>
                     </div>
                 </div>
@@ -4160,15 +4421,7 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 <div class="schedule-item">
                     <div class="schedule-time">9:00 PM – 10:00 PM</div>
                     <div class="schedule-details">
-                        <h4>Nava Niru (Local Assamese artist)</h4>
-                        <p class="venue">Main Stage</p>
-                    </div>
-                </div>
-
-                <div class="schedule-item">
-                    <div class="schedule-time">10:00 PM – 11:30 PM</div>
-                    <div class="schedule-details">
-                        <h4>Shilo the band (Local Boro Artist)</h4>
+                        <h4>Performance by Shila the band</h4>
                         <p class="venue">Main Stage</p>
                     </div>
                 </div>
@@ -4180,7 +4433,7 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 <div class="schedule-content">
                 
                 <div class="schedule-item">
-                    <div class="schedule-time">9:30 AM – 12:00 PM</div>
+                    <div class="schedule-time">9:30 AM – 11:00 AM</div>
                     <div class="schedule-details">
                         <h4>Debate Competition</h4>
                         <p class="venue">Main Stage</p>
@@ -4188,39 +4441,23 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">1:00 PM – 2:00 PM</div>
+                    <div class="schedule-time">10:30 AM – 12:00 PM</div>
                     <div class="schedule-details">
-                        <h4>BKE Stunt</h4>
-                        <p class="venue">CIT Campus</p>
-                    </div>
-                </div>
-
-                <div class="schedule-item">
-                    <div class="schedule-time">2:30 PM – 3:00 PM</div>
-                    <div class="schedule-details">
-                        <h4>Flash Mob</h4>
-                        <p class="venue">CIT Bus stand</p>
+                        <h4>(SPM) Interaction Session</h4>
+                        <p class="venue">BKB</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
                     <div class="schedule-time">3:00 PM – 3:10 PM</div>
                     <div class="schedule-details">
-                        <h4>Lighting of Lamp Chief Guest</h4>
+                        <h4>Lighting of lamp: Chief Guest</h4>
                         <p class="venue">Main Stage</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">3:10 PM – 3:30 PM</div>
-                    <div class="schedule-details">
-                        <h4>Speech by Dean of Student</h4>
-                        <p class="venue">Main Stage</p>
-                    </div>
-                </div>
-
-                <div class="schedule-item">
-                    <div class="schedule-time">3:30 PM– 5:00 PM</div>
+                    <div class="schedule-time">3:10 PM – 4:10 PM</div>
                     <div class="schedule-details">
                         <h4>Prize Distribution</h4>
                         <p class="venue">Main Stage</p>
@@ -4228,23 +4465,31 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">5:15 PM– 6:00 PM</div>
+                    <div class="schedule-time">4:10 PM – 4:45 PM</div>
                     <div class="schedule-details">
-                        <h4>Bagurumba Dance</h4>
+                        <h4>Variety Show</h4>
                         <p class="venue">Main Stage</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">6:00 PM – 6:30 PM</div>
+                    <div class="schedule-time">4:45 PM – 5:00 PM</div>
                     <div class="schedule-details">
-                        <h4>Ramdhenu Bihu Dol</h4>
+                        <h4>Bodo Traditional Dance</h4>
                         <p class="venue">Main Stage</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">6:30 PM – 8:30 PM</div>
+                    <div class="schedule-time">5:00 PM – 5:30 PM</div>
+                    <div class="schedule-details">
+                        <h4>Ramdheni Bihu Dol</h4>
+                        <p class="venue">Main stage</p>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">5:30 PM – 7:30 PM</div>
                     <div class="schedule-details">
                         <h4>Ramp walk (FINAL ROUND)</h4>
                         <p class="venue">Main stage</p>
@@ -4252,15 +4497,15 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">8:30 PM – 9:15 PM</div>
+                    <div class="schedule-time">7:30 PM – 8:00 PM</div>
                     <div class="schedule-details">
-                        <h4>Swayamsewa Basumutary</h4>
+                        <h4>Swrjwswma Basumatary</h4>
                         <p class="venue">Main Stage</p>
                     </div>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">9:30 PM – 10:15 PM</div>
+                    <div class="schedule-time">8:00 PM – 9:00 PM</div>
                     <div class="schedule-details">
                         <h4>NOVO Band</h4>
                         <p class="venue">Main Stage</p>
@@ -4268,9 +4513,9 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
                 </div>
 
                 <div class="schedule-item">
-                    <div class="schedule-time">10:15PM – 11:20PM</div>
+                    <div class="schedule-time">9:00 PM – 10:00 PM</div>
                     <div class="schedule-details">
-                        <h4>DJ (One East)</h4>
+                        <h4>DJ (Olly Esse)</h4>
                         <p class="venue">Main Stage</p>
                     </div>
                 </div>
@@ -4286,45 +4531,31 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
             <p style="color: #7F8C8D; margin-bottom: 40px;">Thank you to our sponsors that help make Ecstasy possible!</p>
             <div class="sponsors-grid">
                 <div class="sponsor-item">
-                    <div class="sponsor-logo"></div>
+                    <div class="sponsor-logo"><img src="media/Sponsor.png" alt="Sponsor 1" style="width: 100%; height: 100%; object-fit: contain;"></div>
                 </div>
                 <div class="sponsor-item">
-                    <div class="sponsor-logo"></div>
+                    <div class="sponsor-logo"><img src="media/Sponsor2.png" alt="Sponsor 2" style="width: 100%; height: 100%; object-fit: contain;"></div>
                 </div>
                 <div class="sponsor-item">
-                    <div class="sponsor-logo"></div>
+                    <div class="sponsor-logo"><img src="media/Sponsor3.png" alt="Sponsor 3" style="width: 100%; height: 100%; object-fit: contain;"></div>
                 </div>
                 <div class="sponsor-item">
-                    <div class="sponsor-logo"></div>
+                    <div class="sponsor-logo"><img src="media/sponsor4.png" alt="Sponsor 4" style="width: 100%; height: 100%; object-fit: contain;"></div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Registration Section -->
-    <section class="registration" id="registration">
-        <div class="container">
-            <h2 class="section-title">Event Countdown</h2>
-            <div class="registration-content" style="justify-content: center;">
-                <div class="countdown-timer" style="max-width: 600px; margin: 0 auto;">
-                    <div class="countdown">
-                        <div class="time-unit">
-                            <span class="time-value" id="days">00</span>
-                            <span class="time-label">Days</span>
-                        </div>
-                        <div class="time-unit">
-                            <span class="time-value" id="hours">00</span>
-                            <span class="time-label">Hours</span>
-                        </div>
-                        <div class="time-unit">
-                            <span class="time-value" id="minutes">00</span>
-                            <span class="time-label">Minutes</span>
-                        </div>
-                        <div class="time-unit">
-                            <span class="time-value" id="seconds">00</span>
-                            <span class="time-label">Seconds</span>
-                        </div>
-                    </div>
+                <div class="sponsor-item">
+                    <div class="sponsor-logo"><img src="media/sponsor5.png" alt="Sponsor 5" style="width: 100%; height: 100%; object-fit: contain;"></div>
+                </div>
+                <div class="sponsor-item">
+                    <div class="sponsor-logo"><img src="media/sponsor6.png" alt="Sponsor 6" style="width: 100%; height: 100%; object-fit: contain;"></div>
+                </div>
+                <div class="sponsor-item">
+                    <div class="sponsor-logo"><img src="media/sponsor7.png" alt="Sponsor 7" style="width: 100%; height: 100%; object-fit: contain;"></div>
+                </div>
+                <div class="sponsor-item">
+                    <div class="sponsor-logo"><img src="media/sponsor8.png" alt="Sponsor 8" style="width: 100%; height: 100%; object-fit: contain;"></div>
+                </div>
+                <div class="sponsor-item">
+                    <div class="sponsor-logo"><img src="media/sponsor9.png" alt="Sponsor 9" style="width: 100%; height: 100%; object-fit: contain;"></div>
                 </div>
             </div>
         </div>
@@ -4368,34 +4599,6 @@ P.O. Rangalikhata, Dist. Kokrajhar, BTAD, Assam 783370</p>
     </footer>
 
     <script>
-        // Countdown Timer
-        function updateCountdown() {
-            const eventDate = new Date('2026-03-06T09:00:00');
-            const now = new Date();
-            const difference = eventDate - now;
-
-            if (difference > 0) {
-                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-                document.getElementById('days').textContent = days.toString().padStart(2, '0');
-                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-            } else {
-                document.getElementById('days').textContent = '00';
-                document.getElementById('hours').textContent = '00';
-                document.getElementById('minutes').textContent = '00';
-                document.getElementById('seconds').textContent = '00';
-            }
-        }
-
-        // Update countdown every second
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-
         // Smooth Scrolling Navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
